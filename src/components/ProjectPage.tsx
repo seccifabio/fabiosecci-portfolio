@@ -260,7 +260,21 @@ export function ProjectPage() {
                 <h3 className="text-sm font-sans font-bold uppercase tracking-widest opacity-50 mb-8">Lead's Perspective</h3>
                 <ScrollOpacityText root={containerRef}>
                   <p className="text-2xl md:text-5xl font-display font-medium leading-[1.1] tracking-tight max-w-5xl">
-                    {project.strategicInsight.text}
+                    {(() => {
+                      const text = project.strategicInsight.text;
+                      const firstPeriodIndex = text.indexOf('.');
+                      if (firstPeriodIndex === -1) return text;
+                      
+                      const hook = text.slice(0, firstPeriodIndex + 1);
+                      const rest = text.slice(firstPeriodIndex + 1);
+                      
+                      return (
+                        <>
+                          <span className="font-bold">{hook}</span>
+                          <span className="font-light opacity-60 ml-3">{rest}</span>
+                        </>
+                      );
+                    })()}
                   </p>
                 </ScrollOpacityText>
               </div>
