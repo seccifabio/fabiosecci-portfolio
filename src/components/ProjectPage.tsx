@@ -8,6 +8,8 @@ import { BrandScroller } from './BrandScroller';
 import { LoadingIndicator } from './application/loading-indicator/loading-indicator';
 import { PROJECTS } from '../data/projects';
 import ShinyText from './ui/ShinyText';
+import Counter from './ui/Counter';
+import ScrollOpacityText from './ui/ScrollOpacityText';
 
 const FadeText: React.FC<{ children: React.ReactNode, className?: string }> = ({ children, className }) => (
   <motion.div initial={{ opacity: 1 }} className={className}>
@@ -192,7 +194,9 @@ export function ProjectPage() {
           <div className="flex flex-col gap-24">
             <div className="w-full">
               <h3 className="text-sm font-sans font-bold uppercase tracking-widest opacity-50 mb-8">The Story</h3>
-              <p className="text-2xl md:text-4xl font-display font-medium leading-[1.2]">{project.story}</p>
+              <ScrollOpacityText root={containerRef}>
+                <p className="text-2xl md:text-4xl font-display font-medium leading-[1.2]">{project.story}</p>
+              </ScrollOpacityText>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 pt-16 border-t border-black/10">
@@ -248,6 +252,35 @@ export function ProjectPage() {
         </AnimatePresence>
       </div>
 
+      {project.strategicInsight && (
+        <div className="relative z-10 bg-zinc-50 text-zinc-900 w-full py-24 border-y border-zinc-100">
+          <div className="px-6 md:px-16 max-w-7xl mx-auto">
+            <div className="flex flex-col gap-12">
+              <div className="w-full">
+                <h3 className="text-sm font-sans font-bold uppercase tracking-widest opacity-50 mb-8">Lead's Perspective</h3>
+                <ScrollOpacityText root={containerRef}>
+                  <p className="text-2xl md:text-5xl font-display font-medium leading-[1.1] tracking-tight max-w-5xl">
+                    {project.strategicInsight.text}
+                  </p>
+                </ScrollOpacityText>
+              </div>
+              
+              <div className="flex flex-col md:flex-row md:items-center gap-6 pt-12 border-t border-zinc-200/50">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] opacity-40">Focus</span>
+                <div className="flex flex-wrap gap-2">
+                  {project.strategicInsight.pills.map((pill, i) => (
+                    <span key={i} className="text-[10px] md:text-[11px] font-mono uppercase tracking-widest px-4 py-2 bg-white border border-zinc-200 rounded-full text-zinc-600">
+                      {pill}
+                    </span>
+                  ))}
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {project.results && (
         <div ref={resultsSectionRef} className="relative z-10 bg-white text-zinc-900 w-full pt-32 pb-48">
           <div className="px-6 md:px-16 max-w-7xl mx-auto">
@@ -256,22 +289,24 @@ export function ProjectPage() {
               <div className="flex flex-col md:flex-row flex-wrap gap-12 md:gap-32">
                 {project.results.value1 && (
                   <div className="flex flex-col">
-                    <span className="text-5xl md:text-7xl font-display font-black tracking-tighter mb-2">{formatValue(project.results.value1)}</span>
+                    <span className="text-5xl md:text-7xl font-display font-black tracking-tighter mb-2"><Counter value={project.results.value1} root={containerRef} /></span>
                     <span className="text-sm font-sans font-bold uppercase tracking-widest opacity-50">{project.results.label1}</span>
                   </div>
                 )}
                 {project.results.value2 && (
                   <div className="flex flex-col">
-                    <span className="text-5xl md:text-7xl font-display font-black tracking-tighter mb-2">{formatValue(project.results.value2)}</span>
+                    <span className="text-5xl md:text-7xl font-display font-black tracking-tighter mb-2"><Counter value={project.results.value2} root={containerRef} /></span>
                     <span className="text-sm font-sans font-bold uppercase tracking-widest opacity-50">{project.results.label2}</span>
                   </div>
                 )}
                 {project.results.value3 && (
                   <div className="flex flex-col">
-                    <span className="text-5xl md:text-7xl font-display font-black tracking-tighter mb-2">{formatValue(project.results.value3)}</span>
+                    <span className="text-5xl md:text-7xl font-display font-black tracking-tighter mb-2"><Counter value={project.results.value3} root={containerRef} /></span>
                     <span className="text-sm font-sans font-bold uppercase tracking-widest opacity-50">{project.results.label3}</span>
                   </div>
                 )}
+
+
               </div>
             </div>
           </div>

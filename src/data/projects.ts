@@ -23,6 +23,10 @@ export interface Project {
     label3: string;
     value3: string;
   };
+  strategicInsight?: {
+    text: string;
+    pills: string[];
+  };
 }
 
 export const PROJECTS: Project[] = [
@@ -62,6 +66,10 @@ export const PROJECTS: Project[] = [
       value2: "+38%",
       label3: "Answer Accuracy",
       value3: "99.2%"
+    },
+    strategicInsight: {
+      text: "Merging utility with emotion. I led the design of an immersive learning experience that uses high-fidelity storytelling and gamified progress to drive daily active usage and long-term knowledge retention on mobile.",
+      pills: ["Retention-Led Design", "Emotional UX"]
     },
     gallery: [
       { type: 'desktop', src: '/Project_1/Desktop/flow.webp' },
@@ -117,6 +125,10 @@ export const PROJECTS: Project[] = [
       label3: "Peer Collaborations",
       value3: "+72%"
     },
+    strategicInsight: {
+      text: "Architecting the future of personalized learning. I scaled the design vision for AI-native study assistants, turning static notes into a dynamic, voice-enabled 'companion' for 350M+ students.",
+      pills: ["Product Scale", "AI Personalization", "Multi-modal UX"]
+    },
     gallery: [
       { type: 'desktop', src: '/Project_2/Flow.webp' },
       { type: 'mobile', src: '/Project_2/Mweb/EFtKjU17xm7a1RriCulTjWKgiHQ.webp' },
@@ -163,6 +175,10 @@ export const PROJECTS: Project[] = [
       value2: "4.8/5",
       label3: "Retention Lift",
       value3: "+15%"
+    },
+    strategicInsight: {
+      text: "Orchestrating AI to transform big data into surgical precision. I designed a strategic dashboard that automates the synthesis of anomalies, reducing critical diagnostic time-to-insight.",
+      pills: ["Enterprise AI Strategy", "Data-to-Insight Workflows"]
     },
     gallery: [
       { type: 'desktop', src: '/Project_3/Flow.webp' },
