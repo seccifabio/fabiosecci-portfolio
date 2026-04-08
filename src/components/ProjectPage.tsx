@@ -358,10 +358,11 @@ export function ProjectPage() {
           <motion.button
             initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }}
             onClick={() => containerRef.current?.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-white text-black w-12 h-12 rounded-full flex items-center justify-center"
+            className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-white text-black w-12 h-12 rounded-full flex items-center justify-center use-std-cursor hide-cursor-label"
           >
             <ArrowUp size={20} />
           </motion.button>
+
         )}
       </AnimatePresence>
     </motion.div>

@@ -310,7 +310,7 @@ export const Portfolio = () => {
               isTransitioning.current = true;
               setTimeout(() => { isTransitioning.current = false; }, 1200);
             }}
-            className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-white text-black w-12 h-12 rounded-full flex items-center justify-center shadow-2xl hide-cursor-label"
+            className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-white text-black w-12 h-12 rounded-full flex items-center justify-center shadow-2xl hide-cursor-label use-std-cursor"
           >
             <ArrowUp size={20} />
           </motion.button>
