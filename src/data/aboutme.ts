@@ -17,7 +17,7 @@ export interface AboutMeData {
 }
 
 export const ABOUT_ME: AboutMeData = {
-  bio: "Design Leader with 10+ years of experience building and scaling digital products for global companies. I specialize in growing and structuring teams, implementing AI-driven processes, and creating scalable design systems that drive efficiency and business impact.",
+  bio: "Hi, I’m Fabio, an Italian Design Leader with 10+ years of experience shaping and scaling digital products for global companies. I thrive at the intersection of design, strategy, and AI—building high-performing teams, streamlining processes, and crafting scalable design systems that accelerate impact and innovation.",
   career: [
     {
       role: "Head DDIT Exp Design",
