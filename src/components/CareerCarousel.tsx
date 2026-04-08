@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { AnimatedText } from './AnimatedText';
 import { ABOUT_ME } from '../data/aboutme';
 
 const CareerItem = ({ role, years, company, link, theme }: { role: string, years: string, company: string, link: string, theme: 'light' | 'dark' }) => (
@@ -20,7 +21,12 @@ const CareerItem = ({ role, years, company, link, theme }: { role: string, years
       )}>
         <svg className={cn("w-5 h-5", theme === 'light' ? 'text-zinc-500' : 'text-zinc-600')} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7h10v10"/><path d="M7 17L17 7"/></svg>
       </div>
-      <span className="font-sans font-semibold text-lg transition-transform duration-300 group-hover:translate-x-2">{company}</span>
+      <div className="hidden md:flex flex-wrap" style={{ columnGap: '0.25em' }}>
+        {company.split(' ').map((word, wordIdx) => (
+          <AnimatedText key={wordIdx} text={word} className="font-sans font-semibold text-lg" />
+        ))}
+      </div>
+      <span className="block md:hidden font-sans font-semibold text-lg">{company}</span>
     </a>
   </div>
 );
