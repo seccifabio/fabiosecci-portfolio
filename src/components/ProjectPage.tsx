@@ -169,7 +169,7 @@ export function ProjectPage() {
       animate={{ y: 0 }}
       exit={{ y: '100%' }}
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-0 bg-black text-white z-30 overflow-y-auto"
+      className="fixed inset-0 bg-white text-zinc-900 z-30 overflow-y-auto"
     >
       <div className="sticky top-0 z-0 w-full flex flex-col min-h-screen pb-12">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="w-full h-[60vh] md:h-[70vh] bg-zinc-900 overflow-hidden">
@@ -265,6 +265,12 @@ export function ProjectPage() {
                     <span className="text-sm font-sans font-bold uppercase tracking-widest opacity-50">{project.results.label2}</span>
                   </div>
                 )}
+                {project.results.value3 && (
+                  <div className="flex flex-col">
+                    <span className="text-5xl md:text-7xl font-display font-black tracking-tighter mb-2">{formatValue(project.results.value3)}</span>
+                    <span className="text-sm font-sans font-bold uppercase tracking-widest opacity-50">{project.results.label3}</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -274,7 +280,7 @@ export function ProjectPage() {
       <div className="relative z-10 bg-black text-white w-full py-16 border-t border-white/10">
         <div className="px-6 md:px-16 max-w-7xl mx-auto w-full flex flex-row justify-between items-center">
           {prevProject ? (
-            <button onClick={() => { containerRef.current?.scrollTo({ top: 0 }); navigate(`/project/${prevProject.slug}`); }} className="group flex flex-col items-start gap-4">
+            <button onClick={() => { containerRef.current?.scrollTo({ top: 0 }); navigate(`/project/${prevProject.slug}`); }} className="group flex flex-col items-start gap-4 use-std-cursor">
               <span className="text-xs font-mono uppercase tracking-widest opacity-50">Previous</span>
               <div className="flex items-center gap-4">
                 <ArrowLeft size={24} className="group-hover:-translate-x-2 transition-transform" />
@@ -283,7 +289,7 @@ export function ProjectPage() {
             </button>
           ) : <div />}
           {nextProject ? (
-            <button onClick={() => { containerRef.current?.scrollTo({ top: 0 }); navigate(`/project/${nextProject.slug}`); }} className="group flex flex-col items-end gap-4">
+            <button onClick={() => { containerRef.current?.scrollTo({ top: 0 }); navigate(`/project/${nextProject.slug}`); }} className="group flex flex-col items-end gap-4 use-std-cursor">
               <span className="text-xs font-mono uppercase tracking-widest opacity-50">Next</span>
               <div className="flex items-center gap-4">
                 <span className="text-xl md:text-3xl font-display font-black uppercase hidden md:block">{nextProject.title}</span>

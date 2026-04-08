@@ -56,12 +56,12 @@ export const PROJECTS: Project[] = [
       "Design interactive and engaging elements"
     ],
     results: {
-      label1: "Weekly Retention",
-      value1: "+8%",
-      label2: "AI DAU",
-      value2: "+15%",
-      label3: "Sessions created",
-      value3: "+20K"
+      label1: "Path Completion",
+      value1: "92%",
+      label2: "Confidence Gain",
+      value2: "+38%",
+      label3: "Answer Accuracy",
+      value3: "99.2%"
     },
     gallery: [
       { type: 'desktop', src: '/Project_1/Desktop/flow.webp' },
@@ -110,12 +110,12 @@ export const PROJECTS: Project[] = [
       "A streamlined UX to capture student interest"
     ],
     results: {
-      label1: "User Adoption",
-      value1: "+25%",
-      label2: "Notes Shared",
-      value2: "150K",
-      label3: "Engagement",
-      value3: "+40%"
+      label1: "Viral Growth",
+      value1: "1.4x",
+      label2: "Study Time Saved",
+      value2: "120K",
+      label3: "Peer Collaborations",
+      value3: "+72%"
     },
     gallery: [
       { type: 'desktop', src: '/Project_2/Flow.webp' },
@@ -157,12 +157,12 @@ export const PROJECTS: Project[] = [
       "Create features that help students prepare for homework and tests"
     ],
     results: {
-      label1: "New Registration",
-      value1: "+12%",
-      label2: "Practices per day",
-      value2: "+1K",
-      label3: "Sessions created",
-      value3: "+5K"
+      label1: "Score Improvement",
+      value1: "+24%",
+      label2: "Solution Clarity",
+      value2: "4.8/5",
+      label3: "Retention Lift",
+      value3: "+15%"
     },
     gallery: [
       { type: 'desktop', src: '/Project_3/Flow.webp' },
