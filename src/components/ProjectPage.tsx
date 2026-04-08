@@ -279,7 +279,7 @@ export function ProjectPage() {
                 </ScrollOpacityText>
               </div>
               
-              <div className="flex flex-col md:flex-row md:items-center gap-6 pt-12 border-t border-zinc-200/50">
+              <div className="flex flex-col md:flex-row md:items-center gap-6 pt-4">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] opacity-40">Focus</span>
                 <div className="flex flex-wrap gap-2">
                   {project.strategicInsight.pills.map((pill, i) => (
