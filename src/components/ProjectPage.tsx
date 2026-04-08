@@ -284,29 +284,27 @@ export function ProjectPage() {
       {project.results && (
         <div ref={resultsSectionRef} className="relative z-10 bg-white text-zinc-900 w-full pt-32 pb-48">
           <div className="px-6 md:px-16 max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-12 md:gap-24 md:items-center">
+            <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-12 md:gap-24 md:items-center text-center md:text-left">
               <h2 className="text-4xl md:text-5xl font-display font-black tracking-tighter uppercase whitespace-nowrap">Results</h2>
-              <div className="flex flex-col md:flex-row flex-wrap gap-12 md:gap-32">
+              <div className="flex flex-col md:flex-row flex-wrap justify-center md:justify-start gap-12 md:gap-32">
                 {project.results.value1 && (
-                  <div className="flex flex-col">
+                  <div className="flex flex-col items-center md:items-start">
                     <span className="text-5xl md:text-7xl font-display font-black tracking-tighter mb-2"><Counter value={project.results.value1} root={containerRef} /></span>
                     <span className="text-sm font-sans font-bold uppercase tracking-widest opacity-50">{project.results.label1}</span>
                   </div>
                 )}
                 {project.results.value2 && (
-                  <div className="flex flex-col">
+                  <div className="flex flex-col items-center md:items-start">
                     <span className="text-5xl md:text-7xl font-display font-black tracking-tighter mb-2"><Counter value={project.results.value2} root={containerRef} /></span>
                     <span className="text-sm font-sans font-bold uppercase tracking-widest opacity-50">{project.results.label2}</span>
                   </div>
                 )}
                 {project.results.value3 && (
-                  <div className="flex flex-col">
+                  <div className="flex flex-col items-center md:items-start">
                     <span className="text-5xl md:text-7xl font-display font-black tracking-tighter mb-2"><Counter value={project.results.value3} root={containerRef} /></span>
                     <span className="text-sm font-sans font-bold uppercase tracking-widest opacity-50">{project.results.label3}</span>
                   </div>
                 )}
-
-
               </div>
             </div>
           </div>
