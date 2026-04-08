@@ -347,9 +347,10 @@ export function ProjectPage() {
           <a href="mailto:fabiosecci@gmail.com" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all"><Mail size={20} /></a>
           <a href="https://linkedin.com/in/fabiosecci/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all"><Linkedin size={20} /></a>
         </div>
-        <div className="w-full px-10 flex justify-between items-end opacity-30 mt-20">
+        <div className="w-full px-6 md:px-16 flex justify-between items-end opacity-30 mt-20">
           <div className="text-[10px] font-mono uppercase tracking-widest">© 2026 Fabio Secci</div>
         </div>
+
       </div>
 
       <AnimatePresence>

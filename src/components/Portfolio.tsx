@@ -89,6 +89,8 @@ const VideoSection: React.FC<{ project: Project; index: number; direction: numbe
           </motion.div>
         </div>
       </div>
+
+
     </motion.section>
   );
 };
@@ -131,7 +133,7 @@ const FooterSection: React.FC = () => {
         </div>
       </div>
       
-      <div className="absolute bottom-10 left-0 right-0 flex justify-center opacity-30 transition-opacity duration-300">
+      <div className="absolute bottom-10 left-10 right-10 flex justify-start opacity-30 transition-opacity duration-300">
         <div className="text-[10px] font-mono uppercase tracking-widest">© 2026 Fabio Secci</div>
       </div>
     </motion.section>
