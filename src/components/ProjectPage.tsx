@@ -7,6 +7,7 @@ import { cn, getAssetPath } from '../lib/utils';
 import { BrandScroller } from './BrandScroller';
 import { LoadingIndicator } from './application/loading-indicator/loading-indicator';
 import { PROJECTS } from '../data/projects';
+import ShinyText from './ui/ShinyText';
 
 const FadeText: React.FC<{ children: React.ReactNode, className?: string }> = ({ children, className }) => (
   <motion.div initial={{ opacity: 1 }} className={className}>
@@ -302,7 +303,11 @@ export function ProjectPage() {
 
       <div ref={footerRef} className="relative z-10 w-full bg-black text-white pt-32 pb-10 flex flex-col items-center">
         <BrandScroller />
-        <h2 className="text-4xl md:text-6xl font-display font-black tracking-tighter uppercase text-center mt-32">Don't chase change.<br />Shape them.</h2>
+        <h2 className="text-4xl md:text-6xl font-display font-black tracking-tighter uppercase text-center mt-32">
+          <ShinyText text="Don't chase change." speed={3} />
+          <br />
+          <ShinyText text="Shape them." speed={3} />
+        </h2>
         <div className="flex gap-12 mt-16 mb-20">
           <a href="mailto:fabiosecci@gmail.com" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all"><Mail size={20} /></a>
           <a href="https://linkedin.com/in/fabiosecci/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all"><Linkedin size={20} /></a>

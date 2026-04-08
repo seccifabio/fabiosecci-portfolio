@@ -6,6 +6,7 @@ import { CustomCursor } from './CustomCursor';
 import { BrandScroller } from './BrandScroller';
 import { getAssetPath } from '../lib/utils';
 import { Project, PROJECTS } from '../data/projects';
+import ShinyText from './ui/ShinyText';
 import { AnimatedText } from './AnimatedText';
 import { AIExperimentsSection } from './AIExperimentsSection';
 import { LoadingIndicator } from './application/loading-indicator/loading-indicator';
@@ -110,7 +111,9 @@ const FooterSection: React.FC = () => {
           transition={{ duration: 1, delay: 0.2 }}
           className="text-3xl md:text-6xl font-display font-black tracking-tighter uppercase"
         >
-          Don't chase change.<br />Shape them.
+          <ShinyText text="Don't chase change." speed={3} />
+          <br />
+          <ShinyText text="Shape them." speed={3} />
         </motion.h2>
         
         <div className="flex flex-wrap justify-center gap-12 md:gap-16 w-full mt-12 md:mt-16 mb-16 md:mb-20">
