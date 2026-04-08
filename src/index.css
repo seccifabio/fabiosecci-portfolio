@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Libre+Franklin:wght@700;800;900&family=Tilt+Warp&family=Poppins:wght@300;400;500;600&family=Dongle:wght@700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-display: "Libre Franklin", sans-serif;
+  --font-brand: "Dongle", sans-serif;
+}
+
+html, body {
+  background-color: #000000;
+}
+
+* {
+  outline: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --bg: #050505;
+  --fg: #ffffff;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.use-std-cursor {
+  cursor: pointer !important;
+}
