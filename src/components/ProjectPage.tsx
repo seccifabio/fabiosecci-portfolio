@@ -199,7 +199,7 @@ export function ProjectPage() {
               </ScrollOpacityText>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 pt-16 border-t border-black/10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 pt-16 border-t border-dotted border-black/20">
               <div>
                 <h3 className="text-sm font-sans font-bold uppercase tracking-widest opacity-50 mb-8">KPIs</h3>
                 <ul className="text-base font-sans space-y-3">
