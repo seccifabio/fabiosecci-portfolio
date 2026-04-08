@@ -113,9 +113,9 @@ const ExperimentVisual = ({ videoUrl, onExpand }: { videoUrl: string, onExpand: 
 
 const FALLBACK_EXPERIMENTS = [
   { id: 'f1', title: "HypeAddicted", description: "luxury barbershop prototype", tools: ["AI", "Next-Gen"], video: "/Experiments/hypeaddicted.mp4", order_index: 0 },
-  { id: 'f2', title: "Murgia Liquori", description: "heritage distillery site", tools: ["Framer", "Stripe"], video: "/Experiments/murgia.mp4", order_index: 1 },
-  { id: 'f3', title: "Aurora", description: "earbuds landing page", tools: ["Windsurf", "Meshy"], video: "/Experiments/aurora.mp4", order_index: 2 },
-  { id: 'f4', title: "SwimFlow", description: "pool management app", tools: ["React", "Supabase"], video: "/Experiments/swimflow.mp4", order_index: 3 }
+  { id: 'f4', title: "MoveNest", description: "property management tool", tools: ["React", "Supabase"], video: "/Experiments/swimflow.mp4", order_index: 1 },
+  { id: 'f2', title: "Murgia Liquori", description: "heritage distillery site", tools: ["Framer", "Stripe"], video: "/Experiments/murgia.mp4", order_index: 2 },
+  { id: 'f3', title: "Aurora", description: "earbuds landing page", tools: ["Windsurf", "Meshy"], video: "/Experiments/aurora.mp4", order_index: 3 }
 ];
 
 export const AIExperimentsSection = () => {
