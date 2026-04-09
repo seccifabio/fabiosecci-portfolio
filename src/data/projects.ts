@@ -177,8 +177,8 @@ export const PROJECTS: Project[] = [
       value3: "+15%"
     },
     strategicInsight: {
-      text: "Orchestrating AI to transform big data into surgical precision. I designed a strategic dashboard that automates the synthesis of anomalies, reducing critical diagnostic time-to-insight.",
-      pills: ["Enterprise AI Strategy", "Data-to-Insight Workflows"]
+      text: "Empowering achievement through deep clarification. I designed a context-aware testing system that supports students beyond the answer, providing the interactive tools and community examples necessary to turn every study challenge into a mastery moment.",
+      pills: ["Adaptive Learning Systems", "Student-Centric UX", "Educational Strategy"]
     },
     gallery: [
       { type: 'desktop', src: '/Project_3/Flow.webp' },
