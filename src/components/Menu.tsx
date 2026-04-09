@@ -2,12 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { CareerCarousel } from './CareerCarousel';
 import { ABOUT_ME } from '../data/aboutme';
+import ScrollOpacityText from './ui/ScrollOpacityText';
 
-const FadeInText = ({ children }: { children: React.ReactNode }) => (
-  <div style={{ opacity: 1 }}>
-    {children}
-  </div>
-);
+// Removing FadeInText in favor of ScrollOpacityText or simple divs
 
 interface MenuProps {
   isOpen: boolean;
@@ -53,24 +50,24 @@ export const Menu = ({ isOpen }: MenuProps) => {
       <div className="font-serif">
         <div className="w-full max-w-5xl mx-auto px-6 md:px-10 pt-32 pb-24">
           <div className="flex flex-col gap-24">
-            <FadeInText>
+            <div>
               <h2 className="text-sm uppercase tracking-[0.3em] opacity-50 mb-6 font-sans">Experience</h2>
-              <div className="text-2xl md:text-4xl leading-relaxed opacity-90 font-sans">
+              <ScrollOpacityText root={containerRef} className="text-2xl md:text-4xl leading-relaxed opacity-90 font-sans">
                 <p>{ABOUT_ME.bio}</p>
-              </div>
-            </FadeInText>
+              </ScrollOpacityText>
+            </div>
 
-            <FadeInText>
+            <div>
               <h2 className="text-sm uppercase tracking-[0.3em] opacity-50 mb-8 font-sans">Education</h2>
-              <div className="text-2xl md:text-4xl leading-relaxed opacity-90 font-sans">
+              <ScrollOpacityText root={containerRef} className="text-2xl md:text-4xl leading-relaxed opacity-90 font-sans">
                 {ABOUT_ME.education.map((item, idx) => (
                   <div key={idx} className={idx < ABOUT_ME.education.length - 1 ? "mb-8" : ""}>
                     <h3 className="font-bold">{item.title}</h3>
                     <p className="opacity-60 text-lg">{item.subtitle}</p>
                   </div>
                 ))}
-              </div>
-            </FadeInText>
+              </ScrollOpacityText>
+            </div>
           </div>
         </div>
 
