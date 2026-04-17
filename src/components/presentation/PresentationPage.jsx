@@ -3,7 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Droplets, Dog, GraduationCap, X, Clock, Headphones, RefreshCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import BounceCards from './BounceCards';
-import { getAssetPath } from '../../lib/utils';
+
+const getAssetPath = (path) => {
+  if (!path) return '';
+  if (path.startsWith('http') || path.startsWith('data:')) return path;
+  return '/' + path.replace(/^\/+/, '');
+};
 
 
 const NDS_EASE = [0.19, 1, 0.22, 1];
