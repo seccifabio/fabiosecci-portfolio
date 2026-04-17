@@ -621,10 +621,21 @@ const PresentationPage = () => {
                         {current.items.map((item, idx) => (
                           <div key={idx}>
                             <div style={{ marginBottom: '2rem' }}>{item.icon}</div>
-                            <h3 style={{ fontSize: '1.8rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '1rem', letterSpacing: '-0.04em' }}>
+                            <h3 style={{ 
+                              fontSize: 'clamp(1.5rem, 2.1vw, 2.2rem)', 
+                              fontWeight: 800, 
+                              textTransform: 'uppercase', 
+                              marginBottom: '1rem', 
+                              letterSpacing: '-0.04em' 
+                            }}>
                               {item.title}
                             </h3>
-                            <div style={{ color: getBodyColor(), fontSize: '1.25rem', fontWeight: 300, lineHeight: 1.3 }}>
+                            <div style={{ 
+                              color: getBodyColor(), 
+                              fontSize: 'clamp(1.2rem, 1.6vw, 1.7rem)', 
+                              fontWeight: 300, 
+                              lineHeight: 1.35 
+                            }}>
                               {item.desc}
                             </div>
                           </div>
