@@ -672,9 +672,11 @@ const PresentationPage = () => {
           src={getAssetPath("/novartis-logo.png")} 
           alt="Novartis" 
           style={{ 
-            height: '35px', 
-            opacity: current.background === 'white' ? 0.35 : 0.5,
-            filter: current.background === 'white' ? 'none' : 'invert(1)' 
+            height: '25px', 
+            opacity: current.background === 'white' ? 0.6 : 0.8,
+            filter: current.background === 'white' 
+              ? 'none' 
+              : 'brightness(0) invert(1)' 
           }} 
         />
       </div>
