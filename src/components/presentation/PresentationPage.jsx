@@ -674,8 +674,8 @@ const PresentationPage = () => {
           style={{ 
             height: '25px', 
             opacity: current.background === 'white' ? 0.6 : 0.8,
-            filter: current.background === 'white' 
-              ? 'none' 
+            filter: (current.background === 'white' || current.background === '#ffffff') 
+              ? 'brightness(0)' 
               : 'brightness(0) invert(1)' 
           }} 
         />
