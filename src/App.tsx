@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import { Header } from './components/Header';
 import { Portfolio } from './components/Portfolio';
 import { ProjectPage } from './components/ProjectPage';
+import PresentationPage from './components/presentation/PresentationPage';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -15,21 +16,31 @@ function AnimatedRoutes() {
         <Routes location={location}>
           <Route path="/" element={<Portfolio />} />
           <Route path="/project/:slug" element={<ProjectPage />} />
+          <Route path="/presentation" element={<PresentationPage />} />
         </Routes>
       </div>
     </AnimatePresence>
   );
 }
 
+function Content() {
+  const location = useLocation();
+  const isPresentation = location.pathname === '/presentation';
+
+  return (
+    <div className="relative bg-black text-white min-h-screen selection:bg-white selection:text-black">
+      {!isPresentation && <Header />}
+      <div id="page-content">
+        <AnimatedRoutes />
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <Router>
-      <div className="relative bg-black text-white min-h-screen selection:bg-white selection:text-black">
-        <Header />
-        <div id="page-content">
-          <AnimatedRoutes />
-        </div>
-      </div>
+      <Content />
     </Router>
   );
 }

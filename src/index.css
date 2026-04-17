@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Libre+Franklin:wght@700;800;900&family=Tilt+Warp&family=Poppins:wght@300;400;500;600&family=Dongle:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Libre+Franklin:wght@300;400;700;800;900&family=Tilt+Warp&family=Poppins:wght@300;400;500;600&family=Dongle:wght@700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -20,6 +20,13 @@ html, body {
 :root {
   --bg: #050505;
   --fg: #ffffff;
+  
+  /* Novartis Brand Tokens */
+  --novartis-primary: #E84E0F;
+  --novartis-secondary: #0460A9;
+  --novartis-neutral: #F7F7F7;
+  --font-main: 'Libre Franklin', sans-serif;
+  --text-primary: #1A1A1A;
 }
 
 body {
