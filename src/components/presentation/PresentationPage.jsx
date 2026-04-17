@@ -160,7 +160,7 @@ const ValuesRotation = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % values.length);
-    }, 3000);
+    }, 2000);
     return () => clearInterval(timer);
   }, [values.length]);
 
