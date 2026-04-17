@@ -307,7 +307,7 @@ const PresentationPage = () => {
         <div>Ask <Highlighter delay={1}>why.</Highlighter></div>
         <div>Validate at <Highlighter delay={1.3}>pace.</Highlighter></div>
         <div>Hypothesize, experiment, <Highlighter delay={1.6}>iterate.</Highlighter></div>
-        <div>Prove or disprove, <Highlighter delay={1.9}>document.</Highlighter></div>
+        <div>Prove or disprove, document. <Highlighter delay={1.9}>Build shared truths.</Highlighter></div>
       </div>,
       background: "white",
       color: "black"
