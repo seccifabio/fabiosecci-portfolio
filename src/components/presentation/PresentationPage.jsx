@@ -654,6 +654,24 @@ const PresentationPage = () => {
           </div>
         </Slide>
       </AnimatePresence>
+      
+      <div style={{
+        position: 'absolute',
+        bottom: '40px',
+        right: '40px',
+        zIndex: 100,
+        pointerEvents: 'none'
+      }}>
+        <img 
+          src={getAssetPath("/novartis-logo.png")} 
+          alt="Novartis" 
+          style={{ 
+            height: '35px', 
+            opacity: current.background === 'white' ? 0.35 : 0.5,
+            filter: current.background === 'white' ? 'none' : 'invert(1)' 
+          }} 
+        />
+      </div>
 
     </div>
   );
