@@ -110,7 +110,7 @@ const RoleRotation = () => {
     }}>
       <div style={{ fontSize: 'clamp(3rem, 6vw, 6rem)', fontWeight: 900, opacity: 0.2 }}>THE</div>
       <div style={{ 
-        height: 'clamp(5rem, 9vw, 10rem)', 
+        height: 'clamp(4rem, 8vw, 10rem)', 
         position: 'relative',
         display: 'flex',
         alignItems: 'baseline'
@@ -132,7 +132,7 @@ const RoleRotation = () => {
                   delay: i * 0.03 
                 }}
                 style={{
-                  fontSize: 'clamp(5rem, 9vw, 10rem)',
+                  fontSize: 'clamp(4rem, 7.5vw, 10rem)',
                   lineHeight: 0.8,
                   fontWeight: 900,
                   letterSpacing: '-0.07em',
