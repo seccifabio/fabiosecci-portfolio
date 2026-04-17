@@ -115,7 +115,7 @@ const FooterSection: React.FC = () => {
         >
           <ShinyText text="Don't chase change." speed={3} />
           <br />
-          <ShinyText text="Shape them." speed={3} />
+          <ShinyText text="Shape it." speed={3} />
         </motion.h2>
         
         <div className="flex flex-wrap justify-center gap-12 md:gap-16 w-full mt-12 md:mt-16 mb-16 md:mb-20">

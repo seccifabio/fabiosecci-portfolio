@@ -353,7 +353,7 @@ export function ProjectPage() {
         <h2 className="text-4xl md:text-6xl font-display font-black tracking-tighter uppercase text-center mt-32">
           <ShinyText text="Don't chase change." speed={3} />
           <br />
-          <ShinyText text="Shape them." speed={3} />
+          <ShinyText text="Shape it." speed={3} />
         </h2>
         <div className="flex gap-12 mt-16 mb-20">
           <a href="mailto:fabiosecci@gmail.com" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all"><Mail size={20} /></a>

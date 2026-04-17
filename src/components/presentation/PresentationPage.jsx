@@ -91,7 +91,7 @@ const RotatingGreeting = () => {
 };
 
 const RoleRotation = () => {
-  const roles = ["PIXEL CURATOR.", "ORCHESTRATOR."];
+  const roles = ["SYSTEMS ARCHITECT.", "ORCHESTRATOR."];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -280,7 +280,7 @@ const PresentationPage = () => {
     {
       id: 2,
       category: "[DNA]",
-      headline: "DON'T CHASE\nCHANGE — SHAPE THEM.",
+      headline: "DON’T CHASE\nCHANGE — SHAPE IT.",
       body: [
         <span>Smoothing <Highlighter delay={1}>friction</Highlighter></span>,
         <span>Driving <Highlighter delay={1.2}>efficiency</Highlighter></span>,
@@ -304,10 +304,10 @@ const PresentationPage = () => {
       category: "[Vision]",
       headline: <RoleRotation />,
       body: <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-        <div>Ask <Highlighter delay={1}>why</Highlighter>.</div>
-        <div>React <Highlighter delay={1.3}>fast</Highlighter>.</div>
-        <div>Experiment, <Highlighter delay={1.6}>learn.</Highlighter></div>
-        <div>Prove or disprove, <Highlighter delay={1.9}>reflect.</Highlighter></div>
+        <div>Ask <Highlighter delay={1}>why.</Highlighter></div>
+        <div>Validate at <Highlighter delay={1.3}>pace.</Highlighter></div>
+        <div>Hypothesize, experiment, <Highlighter delay={1.6}>iterate.</Highlighter></div>
+        <div>Prove or disprove, <Highlighter delay={1.9}>document.</Highlighter></div>
       </div>,
       background: "white",
       color: "black"
