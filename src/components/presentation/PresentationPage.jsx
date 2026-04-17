@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Droplets, Dog, GraduationCap, X, Clock, Headphones, RefreshCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import BounceCards from './BounceCards';
+import { getAssetPath } from '../../lib/utils';
 
 
 const NDS_EASE = [0.19, 1, 0.22, 1];
@@ -355,9 +356,9 @@ const PresentationPage = () => {
             <BounceCards
               className="custom-bounceCards"
               images={[
-                "/Videos/Wake.mp4",
-                "/Videos/Cicci-hugo.mp4",
-                "/Videos/Wing.mp4"
+                getAssetPath("/Videos/Wake.mp4"),
+                getAssetPath("/Videos/Cicci-hugo.mp4"),
+                getAssetPath("/Videos/Wing.mp4")
               ]}
               containerWidth={1200}
               containerHeight={550}
