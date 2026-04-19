@@ -56,6 +56,54 @@ const BrowserSkeleton = ({ children, onClose, projectName }: { children: React.R
   );
 };
 
+const IphoneSkeleton = ({ children, onClose, projectName }: { children: React.ReactNode, onClose: () => void, projectName: string }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-12"
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full max-w-[320px] aspect-[9/19.5] bg-zinc-950 rounded-[3rem] border-[8px] border-zinc-900 shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col"
+      >
+        {/* Notch */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-zinc-900 rounded-b-2xl z-20 flex items-center justify-center">
+            <div className="w-8 h-1 bg-zinc-800 rounded-full" />
+        </div>
+        
+        {/* Close button Overlay */}
+        <button 
+          onClick={onClose}
+          className="absolute top-4 right-4 z-50 group p-2 bg-black/50 hover:bg-black/80 rounded-full transition-all duration-300 text-white border border-white/10 use-std-cursor"
+        >
+          <X size={20} className="transition-transform duration-300 group-hover:rotate-90" />
+        </button>
+
+        <div className="flex-1 relative bg-black overflow-hidden text-white">
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center z-10 bg-black">
+              <LoadingIndicator type="dot-circle" size="md" label="Loading Lab..." />
+            </div>
+          )}
+          {React.cloneElement(children as React.ReactElement, { 
+            onLoadedData: () => setIsLoading(false) 
+          })}
+        </div>
+        
+        {/* Home Indicator */}
+        <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-24 h-1 bg-white/20 rounded-full z-20" />
+      </motion.div>
+    </motion.div>
+  );
+};
+
 const ExperimentVisual = ({ videoUrl, onExpand }: { videoUrl: string, onExpand: () => void }) => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -112,10 +160,11 @@ const ExperimentVisual = ({ videoUrl, onExpand }: { videoUrl: string, onExpand: 
 };
 
 const FALLBACK_EXPERIMENTS = [
-  { id: 'f1', title: "HypeAddicted", description: "luxury barbershop prototype", tools: ["AI", "Next-Gen"], video: "/Experiments/hypeaddicted.mp4", order_index: 0 },
-  { id: 'f4', title: "MoveNest", description: "property management tool", tools: ["React", "InsForge"], video: "/Experiments/swimflow.mp4", order_index: 1 },
-  { id: 'f2', title: "Murgia Liquori", description: "heritage distillery site", tools: ["Framer", "Stripe"], video: "/Experiments/murgia.mp4", order_index: 2 },
-  { id: 'f3', title: "Aurora", description: "earbuds landing page", tools: ["Windsurf", "Meshy"], video: "/Experiments/aurora.mp4", order_index: 3 }
+  { id: 'f0', title: "Xout", description: "Workout webapp", tools: ["AI", "Next-Gen"], video: "/Experiments/xout.mp4", device: "mobile", order_index: 0 },
+  { id: 'f1', title: "HypeAddicted", description: "luxury barbershop prototype", tools: ["AI", "Next-Gen"], video: "/Experiments/hypeaddicted.mp4", order_index: 1 },
+  { id: 'f4', title: "MoveNest", description: "property management tool", tools: ["React", "InsForge"], video: "/Experiments/swimflow.mp4", order_index: 2 },
+  { id: 'f2', title: "Murgia Liquori", description: "heritage distillery site", tools: ["Framer", "Stripe"], video: "/Experiments/murgia.mp4", order_index: 3 },
+  { id: 'f3', title: "Aurora", description: "earbuds landing page", tools: ["Windsurf", "Meshy"], video: "/Experiments/aurora.mp4", order_index: 4 }
 ];
 
 export const AIExperimentsSection = () => {
@@ -197,9 +246,15 @@ export const AIExperimentsSection = () => {
 
         <AnimatePresence>
           {isFullscreen && experiments[hoveredIndex] && (
-            <BrowserSkeleton onClose={() => setIsFullscreen(false)} projectName={experiments[hoveredIndex].title}>
-              <video src={getAssetPath(experiments[hoveredIndex].video)} autoPlay muted loop playsInline className="w-full h-full object-cover" />
-            </BrowserSkeleton>
+            experiments[hoveredIndex].device === 'mobile' ? (
+              <IphoneSkeleton onClose={() => setIsFullscreen(false)} projectName={experiments[hoveredIndex].title}>
+                <video src={getAssetPath(experiments[hoveredIndex].video)} autoPlay muted loop playsInline className="w-full h-full object-cover" />
+              </IphoneSkeleton>
+            ) : (
+              <BrowserSkeleton onClose={() => setIsFullscreen(false)} projectName={experiments[hoveredIndex].title}>
+                <video src={getAssetPath(experiments[hoveredIndex].video)} autoPlay muted loop playsInline className="w-full h-full object-cover" />
+              </BrowserSkeleton>
+            )
           )}
         </AnimatePresence>
 
@@ -223,7 +278,10 @@ export const AIExperimentsSection = () => {
               <div className="py-8 px-4 md:px-8 flex flex-col items-center">
                 <div className="w-24 h-px bg-zinc-200 mb-6"></div>
                 <p className="text-sm font-sans mb-8 text-zinc-600 max-w-md text-center leading-relaxed">{experiments[expandedIndex].description}</p>
-                <div className="w-full aspect-video bg-zinc-100 rounded-2xl overflow-hidden">
+                <div className={cn(
+                  "overflow-hidden rounded-2xl bg-zinc-100",
+                  experiments[expandedIndex].device === 'mobile' ? "w-[280px] aspect-[9/19.5]" : "w-full aspect-video"
+                )}>
                   <video src={getAssetPath(experiments[expandedIndex].video)} autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 </div>
               </div>
