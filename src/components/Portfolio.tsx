@@ -23,7 +23,7 @@ const VideoSection: React.FC<{ project: Project; index: number; direction: numbe
         opacity: shouldFadeToWhite ? 1 : 0 
       }}
       transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center bg-black z-10"
+      className="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center bg-background z-10"
     >
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <motion.video
@@ -50,11 +50,11 @@ const VideoSection: React.FC<{ project: Project; index: number; direction: numbe
           initial={{ opacity: 0 }}
           exit={{ opacity: shouldFadeToWhite ? 1 : 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-0 bg-white z-10 pointer-events-none"
+          className="absolute inset-0 bg-foreground z-10 pointer-events-none"
         />
       </div>
 
-      <div className="relative z-10 w-full h-full flex flex-col justify-end p-6 md:p-16">
+      <div className="relative z-10 w-full h-full flex flex-col justify-end p-md md:p-xxl">
         <div className="flex flex-col items-start w-full">
           <div className="flex flex-col gap-2 mb-4 overflow-hidden">
             <motion.h2 
@@ -102,9 +102,9 @@ const FooterSection: React.FC = () => {
       animate={{ y: 0 }}
       exit={{ y: '100%' }}
       transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute inset-0 w-full h-full bg-black z-20 flex flex-col items-center justify-center p-10 text-center hide-cursor-label cursor-none"
+      className="absolute inset-0 w-full h-full bg-background z-20 flex flex-col items-center justify-center p-lg text-center hide-cursor-label cursor-none"
     >
-      <div className="max-w-6xl w-full flex flex-col items-center gap-16">
+      <div className="max-w-6xl w-full flex flex-col items-center gap-xxl">
         <BrandScroller />
         
         <motion.h2 
@@ -118,15 +118,15 @@ const FooterSection: React.FC = () => {
           <ShinyText text="Shape it." speed={3} />
         </motion.h2>
         
-        <div className="flex flex-wrap justify-center gap-12 md:gap-16 w-full mt-12 md:mt-16 mb-16 md:mb-20">
+        <div className="flex flex-wrap justify-center gap-lg md:gap-xl w-full mt-lg md:mt-xl mb-xl md:mb-xxl">
           <a href="mailto:fabiosecci@gmail.com" className="group use-std-cursor">
-            <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center transition-all duration-500 group-hover:bg-white group-hover:border-white group-hover:text-black">
+            <div className="w-12 h-12 rounded-full border border-glass-border flex items-center justify-center transition-all duration-500 group-hover:bg-foreground group-hover:border-foreground group-hover:text-background">
               <Mail size={20} />
             </div>
           </a>
 
           <a href="https://www.linkedin.com/in/fabiosecci/" target="_blank" rel="noopener noreferrer" className="group use-std-cursor">
-            <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center transition-all duration-500 group-hover:bg-white group-hover:border-white group-hover:text-black">
+            <div className="w-12 h-12 rounded-full border border-glass-border flex items-center justify-center transition-all duration-500 group-hover:bg-foreground group-hover:border-foreground group-hover:text-background">
               <Linkedin size={20} />
             </div>
           </a>
@@ -214,7 +214,7 @@ export const Portfolio = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-0 w-full h-full overflow-hidden bg-black cursor-pointer"
+      className="fixed inset-0 w-full h-full overflow-hidden bg-background cursor-pointer"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onClick={() => {
@@ -227,7 +227,7 @@ export const Portfolio = () => {
       
       <AnimatePresence initial={true} custom={direction}>
         {loading ? (
-          <div className="flex items-center justify-center w-full h-full bg-black">
+          <div className="flex items-center justify-center w-full h-full bg-background">
             <LoadingIndicator type="dot-circle" size="md" label="Loading..." />
           </div>
         ) : activeIndex < projects.length ? (
@@ -256,9 +256,9 @@ export const Portfolio = () => {
           >
             {Array.from({ length: TOTAL_SLIDES }).map((_, i) => {
               const isWhiteSection = activeIndex === projects.length;
-              const dotColor = isWhiteSection ? 'bg-black' : 'bg-white';
-              const dotOpacity = isWhiteSection ? 'bg-black/20' : 'bg-white/20';
-              const hoverColor = isWhiteSection ? 'group-hover:bg-black/50' : 'group-hover:bg-white/50';
+              const dotColor = isWhiteSection ? 'bg-background' : 'bg-foreground';
+              const dotOpacity = isWhiteSection ? 'bg-background/20' : 'bg-foreground/20';
+              const hoverColor = isWhiteSection ? 'group-hover:bg-background/50' : 'group-hover:bg-foreground/50';
 
               return (
                 <button
@@ -310,7 +310,7 @@ export const Portfolio = () => {
               isTransitioning.current = true;
               setTimeout(() => { isTransitioning.current = false; }, 1200);
             }}
-            className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-white text-black w-12 h-12 rounded-full flex items-center justify-center shadow-2xl hide-cursor-label use-std-cursor"
+            className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-foreground text-background w-12 h-12 rounded-full flex items-center justify-center shadow-2xl hide-cursor-label use-std-cursor"
           >
             <ArrowUp size={20} />
           </motion.button>

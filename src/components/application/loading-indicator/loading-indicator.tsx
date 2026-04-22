@@ -25,7 +25,7 @@ export const LoadingIndicator: React.FC<LoadingIndicatorProps> = ({
           {[...Array(8)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-2 h-2 bg-zinc-400 rounded-full"
+              className="absolute w-2 h-2 bg-muted rounded-full"
               initial={{ opacity: 0.1 }}
               animate={{ 
                 opacity: [0.1, 1, 0.1],
@@ -47,7 +47,7 @@ export const LoadingIndicator: React.FC<LoadingIndicatorProps> = ({
         </div>
         {label && (
           <motion.p 
-            className="text-white/60 text-sm font-medium tracking-widest uppercase italic"
+            className="text-muted text-sm font-medium tracking-widest uppercase italic"
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
@@ -61,8 +61,8 @@ export const LoadingIndicator: React.FC<LoadingIndicatorProps> = ({
   // Fallback spinner if type is different
   return (
     <div className="flex flex-col items-center justify-center gap-3">
-      <div className={`border-2 border-zinc-400/20 border-t-zinc-400 rounded-full animate-spin ${sizeClasses[size]}`} />
-      {label && <p className="text-white/60 text-xs uppercase tracking-widest">{label}</p>}
+      <div className={`border-2 border-muted/20 border-t-muted rounded-full animate-spin ${sizeClasses[size]}`} />
+      {label && <p className="text-muted text-xs uppercase tracking-widest">{label}</p>}
     </div>
   );
 };

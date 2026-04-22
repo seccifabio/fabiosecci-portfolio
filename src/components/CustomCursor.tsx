@@ -54,7 +54,7 @@ export const CustomCursor = () => {
     <div className="fixed inset-0 pointer-events-none z-[9999] hidden md:block">
       {/* Main Cursor Dot - Solid 20x20 */}
       <motion.div
-        className="absolute w-5 h-5 bg-white rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+        className="absolute w-5 h-5 bg-foreground rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(var(--fg-rgb,255,255,255),0.3)]"
         style={{
           x: smoothX,
           y: smoothY,
@@ -67,7 +67,7 @@ export const CustomCursor = () => {
         }}
       />
       <motion.div
-        className={cn("absolute", isLightCursor ? 'text-black' : 'text-white')}
+        className={cn("absolute", isLightCursor ? 'text-background' : 'text-foreground')}
         style={{
           x: smoothX,
           y: smoothY,

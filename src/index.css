@@ -6,27 +6,31 @@
   --font-inter: "Inter", sans-serif;
   --font-display: "Libre Franklin", sans-serif;
   --font-brand: "Dongle", sans-serif;
-}
 
-html, body {
-  background-color: #000000;
-}
+  /* Design Tokens from DESIGN.md */
+  --color-background: #050505;
+  --color-foreground: #ffffff;
+  --color-accent: #E84E0F;
+  --color-muted: #333333;
+  --color-glass-bg: #111111;
+  --color-glass-border: #222222;
 
-* {
-  outline: transparent;
-  -webkit-tap-highlight-color: transparent;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 64px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
 }
 
 :root {
-  --bg: #050505;
-  --fg: #ffffff;
-  
-  /* Novartis Brand Tokens */
-  --novartis-primary: #E84E0F;
-  --novartis-secondary: #0460A9;
-  --novartis-neutral: #F7F7F7;
-  --font-main: 'Libre Franklin', sans-serif;
-  --text-primary: #1A1A1A;
+  --bg: var(--color-background);
+  --fg: var(--color-foreground);
+  --accent: var(--color-accent);
 }
 
 body {
