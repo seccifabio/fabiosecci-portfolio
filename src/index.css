@@ -31,6 +31,12 @@
   --bg: var(--color-background);
   --fg: var(--color-foreground);
   --accent: var(--color-accent);
+
+  /* Novartis Legacy Tokens (for Presentation Page) */
+  --novartis-primary: #EC4A08;   /* Novartis Orange */
+  --novartis-secondary: #0460A9; /* Novartis Blue */
+  --text-primary: #1A1A1A;       /* Dark text for white slides */
+  --font-main: "Libre Franklin", sans-serif;
 }
 
 body {
