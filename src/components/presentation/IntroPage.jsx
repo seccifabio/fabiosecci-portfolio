@@ -986,8 +986,6 @@ const IntroPage = () => {
                           gap: '10px'
                         }}>
                           <span>0{idx + 1}</span>
-                          <span style={{ opacity: 0.3 }}>|</span>
-                          <span style={{ fontWeight: 400 }}>{stage.year}</span>
                         </div>
                         <div>
                           <h3 style={{ 
