@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { Portfolio } from './components/Portfolio';
 import { ProjectPage } from './components/ProjectPage';
 import PresentationPage from './components/presentation/PresentationPage';
+import IntroPage from './components/presentation/IntroPage';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -17,6 +18,7 @@ function AnimatedRoutes() {
           <Route path="/" element={<Portfolio />} />
           <Route path="/project/:slug" element={<ProjectPage />} />
           <Route path="/presentation" element={<PresentationPage />} />
+          <Route path="/intro" element={<IntroPage />} />
         </Routes>
       </div>
     </AnimatePresence>
@@ -25,7 +27,7 @@ function AnimatedRoutes() {
 
 function Content() {
   const location = useLocation();
-  const isPresentation = location.pathname === '/presentation';
+  const isPresentation = location.pathname === '/presentation' || location.pathname === '/intro';
 
   return (
     <div className="relative bg-black text-white min-h-screen selection:bg-white selection:text-black">
