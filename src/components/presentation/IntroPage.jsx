@@ -517,9 +517,9 @@ const IntroPage = () => {
     },
     {
       id: 4,
-      category: "[Education]",
-      headline: "EDUCATION",
-      accent: { word: "EDUCATION", color: "var(--novartis-primary)" },
+      category: "[Academy]",
+      headline: "EDUCATION.",
+      accent: { word: "EDUCATION.", color: "var(--novartis-primary)" },
       stages: [
         { 
           title: "Master of Web &\nMultimedia Design", 
