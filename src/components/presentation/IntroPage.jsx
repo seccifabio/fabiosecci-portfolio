@@ -643,14 +643,22 @@ const IntroPage = () => {
             overflow: 'hidden'
           }}>
             <motion.img 
-              initial={{ scale: 1.1, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
+              initial={{ scale: 1.1, opacity: 0, x: '-3%', y: '3%' }}
+              animate={{ 
+                scale: [1.1, 1.15, 1.1],
+                opacity: 1,
+                x: ['-3%', '3%', '-3%'],
+                y: ['3%', '-3%', '3%']
+              }}
+              transition={{ 
+                opacity: { duration: 1.5, ease: "easeOut" },
+                default: { duration: 20, repeat: Infinity, ease: "linear" }
+              }}
               src={getAssetPath('fabio-profile-v2.png')} 
               alt="Fabio Secci"
-              style={{
-                width: '100%',
-                height: '100%',
+              style={{ 
+                width: '100%', 
+                height: '100%', 
                 objectFit: 'cover'
               }}
             />
