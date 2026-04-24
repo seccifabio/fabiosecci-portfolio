@@ -517,7 +517,7 @@ const IntroPage = () => {
     },
     {
       id: 4,
-      category: "[Academy]",
+      category: "[Academic]",
       headline: "EDUCATION.",
       accent: { word: "EDUCATION.", color: "var(--novartis-primary)" },
       stages: [
