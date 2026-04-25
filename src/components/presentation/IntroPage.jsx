@@ -294,7 +294,7 @@ const RoleRotation = () => {
 };
 
 const ValuesRotation = () => {
-  const values = ["INSPIRED.", "CURIOUS.", "UNBOSSED."];
+  const values = ["INSPIRED.", "CURIOUS.", "UNBOSSED.", "INTEGRITY."];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
