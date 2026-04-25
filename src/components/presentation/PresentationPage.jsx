@@ -396,6 +396,16 @@ const PresentationPage = () => {
     {
       id: 4,
       category: "[DNA]",
+      headline: "RADICALLY\nTRANSPARENT.",
+      body: <span>Clarity is the <Highlighter delay={1}>highest form of respect</Highlighter>. I believe in open doors and direct, human conversations.</span>,
+      background: "white",
+      color: "black",
+      accent: { word: "TRANSPARENT", color: "var(--novartis-primary)" },
+      transition: "horizontal"
+    },
+    {
+      id: 5,
+      category: "[DNA]",
       headline: "DON’T CHASE\nCHANGE — SHAPE IT.",
       body: [
         <span>Smoothing <Highlighter delay={1}>friction</Highlighter></span>,
@@ -405,16 +415,6 @@ const PresentationPage = () => {
       background: "deep-blue",
       color: "white",
       layout: "bullets",
-      transition: "horizontal"
-    },
-    {
-      id: 5,
-      category: "[DNA]",
-      headline: "RADICALLY\nTRANSPARENT.",
-      body: <span>Clarity is the <Highlighter delay={1}>highest form of respect</Highlighter>. I believe in open doors and direct, human conversations.</span>,
-      background: "white",
-      color: "black",
-      accent: { word: "TRANSPARENT", color: "var(--novartis-primary)" },
       transition: "horizontal"
     },
     {
