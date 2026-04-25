@@ -521,7 +521,7 @@ const PresentationPage = () => {
     {
       id: 5,
       category: "[DNA]",
-      headline: <DNARotation />,
+      headline: "DON'T CHASE CHANGE -\nSHAPE IT .",
       body: [
         <span>Smoothing <Highlighter delay={1}>friction</Highlighter></span>,
         <span>Driving <Highlighter delay={1.2}>efficiency</Highlighter></span>,
