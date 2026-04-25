@@ -704,7 +704,7 @@ const PresentationPage = () => {
                         <div style={{ fontSize: '4.5rem', fontWeight: 300, marginBottom: '1rem', lineHeight: 1 }}>
                           {current.subHeader}
                         </div>
-                        <div style={{ fontSize: '2.4rem', fontWeight: 300, opacity: 0.8, lineHeight: 1.2 }}>
+                        <div style={{ fontSize: '1.8rem', fontWeight: 300, opacity: 0.8, lineHeight: 1.2 }}>
                           {current.body}
                         </div>
                       </div>
