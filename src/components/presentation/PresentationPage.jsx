@@ -310,6 +310,66 @@ const Slide = ({ children, background = "white", color = "black", custom, fullWi
   );
 };
 
+const VideoHighlightCarousel = () => {
+  const videos = [
+    '/Video-HL/1.mp4',
+    '/Video-HL/2.mp4',
+    '/Video-HL/3.mp4'
+  ];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % videos.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [videos.length]);
+
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
+      <AnimatePresence mode="wait">
+        <motion.video
+          key={videos[index]}
+          src={getAssetPath(videos[index])}
+          autoPlay
+          muted
+          loop
+          playsInline
+          initial={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          exit={{ opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
+          }}
+        />
+      </AnimatePresence>
+      <div style={{ 
+        position: 'absolute', 
+        bottom: '2rem', 
+        right: '2rem', 
+        display: 'flex', 
+        gap: '0.5rem',
+        zIndex: 10
+      }}>
+        {videos.map((_, i) => (
+          <div 
+            key={i}
+            style={{ 
+              width: '40px', 
+              height: '2px', 
+              backgroundColor: i === index ? 'white' : 'rgba(255,255,255,0.3)',
+              transition: 'all 0.3s'
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const PresentationPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -784,9 +844,12 @@ const PresentationPage = () => {
                           height: '100%',
                           backgroundColor: 'white',
                           zIndex: 25,
-                          opacity: 1
+                          opacity: 1,
+                          overflow: 'hidden'
                         }}
-                      />
+                      >
+                        <VideoHighlightCarousel />
+                      </motion.div>
                     </>
                   )}
                 </AnimatePresence>
