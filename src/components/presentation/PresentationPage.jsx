@@ -656,8 +656,8 @@ const PresentationPage = () => {
       return;
     }
 
-    if (current.category === '[Experience]' && introStage === 0) {
-      setIntroStage(1);
+    if (current.category === '[Experience]' && introStage < 2) {
+      setIntroStage(introStage + 1);
       return;
     }
 
@@ -674,7 +674,7 @@ const PresentationPage = () => {
     if (e) e.stopPropagation();
     
     if (introStage > 0) {
-      setIntroStage(0);
+      setIntroStage(introStage - 1);
       return;
     }
 
@@ -686,7 +686,9 @@ const PresentationPage = () => {
     setCurrentSlide(prevIndex);
     
     // Set to last stage if it's a multi-stage slide
-    if (slides[prevIndex].layout === 'intro-split' || slides[prevIndex].category === '[Heritage]' || slides[prevIndex].category === '[Experience]') {
+    if (slides[prevIndex].category === '[Experience]') {
+      setIntroStage(2);
+    } else if (slides[prevIndex].layout === 'intro-split' || slides[prevIndex].category === '[Heritage]') {
       setIntroStage(1);
     } else {
       setIntroStage(0);
@@ -855,7 +857,7 @@ const PresentationPage = () => {
                 </motion.div>
 
                 <AnimatePresence>
-                  {introStage === 1 && (
+                  {introStage >= 1 && (
                     <>
                       <motion.div
                         initial={{ x: '-100%' }}
@@ -874,35 +876,121 @@ const PresentationPage = () => {
                           flexDirection: 'column',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          boxShadow: '20px 0 50px rgba(0,0,0,0.1)'
+                          boxShadow: '20px 0 50px rgba(0,0,0,0.1)',
+                          padding: '4rem'
                         }}
                       >
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
-                          <motion.img
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.6, duration: 1, ease: APPLE_EASE }}
-                            src={getAssetPath('/Brands/TOIQFStYoBqXsOH4j07VJf0B8.avif')}
-                            alt="Novartis Logo"
-                            style={{ width: '30vw', height: 'auto', filter: 'brightness(0) invert(1)' }}
-                          />
-                          <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 0.6, y: 0 }}
-                            transition={{ delay: 1, duration: 1, ease: APPLE_EASE }}
-                            style={{
-                              fontFamily: 'monospace',
-                              fontSize: '1rem',
-                              letterSpacing: '0.3em',
-                              color: 'white',
-                              border: '1px solid rgba(255,255,255,0.3)',
-                              padding: '8px 20px',
-                              borderRadius: '20px',
-                              marginTop: '1rem'
+                        <div style={{ 
+                          display: 'flex', 
+                          flexDirection: 'column', 
+                          alignItems: 'center', 
+                          justifyContent: 'center',
+                          width: '100%',
+                          height: '100%',
+                          position: 'relative'
+                        }}>
+                          {/* Logo and Date Container */}
+                          <motion.div 
+                            animate={{ 
+                              y: introStage === 1 ? 0 : -250,
+                              scale: introStage === 1 ? 1 : 0.65
+                            }}
+                            transition={{ duration: 1, ease: APPLE_EASE }}
+                            style={{ 
+                              display: 'flex', 
+                              flexDirection: 'column', 
+                              alignItems: 'center', 
+                              gap: '2rem' 
                             }}
                           >
-                            2021 — PRESENT
+                            <motion.img
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: 0.6, duration: 1, ease: APPLE_EASE }}
+                              src={getAssetPath('/Brands/TOIQFStYoBqXsOH4j07VJf0B8.avif')}
+                              alt="Novartis Logo"
+                              style={{ width: '30vw', height: 'auto', filter: 'brightness(0) invert(1)' }}
+                            />
+                            <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 0.6, y: 0 }}
+                              transition={{ delay: 1, duration: 1, ease: APPLE_EASE }}
+                              style={{
+                                fontFamily: 'monospace',
+                                fontSize: '1rem',
+                                letterSpacing: '0.3em',
+                                color: 'white',
+                                border: '1px solid rgba(255,255,255,0.3)',
+                                padding: '8px 20px',
+                                borderRadius: '20px'
+                              }}
+                            >
+                              2021 — PRESENT
+                            </motion.div>
                           </motion.div>
+
+                          {/* Bullet Points Container */}
+                          <AnimatePresence>
+                            {introStage === 2 && (
+                              <motion.div 
+                                initial={{ opacity: 0, y: 50 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 50 }}
+                                transition={{ duration: 0.8, ease: APPLE_EASE, delay: 0.3 }}
+                                style={{ 
+                                  position: 'absolute',
+                                  bottom: '5vh',
+                                  width: '100%',
+                                  display: 'flex',
+                                  justifyContent: 'center'
+                                }}
+                              >
+                                <div style={{ 
+                                  display: 'grid', 
+                                  gridTemplateColumns: 'repeat(1, 1fr)', 
+                                  gap: '2.5rem',
+                                  maxWidth: '450px',
+                                  width: '100%'
+                                }}>
+                                  {[
+                                    { title: "LEAD TEAMS", desc: "Shaping high-performing design squads." },
+                                    { title: "PRODUCT VISION", desc: "Strategy for global digital ecosystems." },
+                                    { title: "DESIGN OPS", desc: "Optimizing workflows and scalability." },
+                                    { title: "USER CENTERED", desc: "Aligned with business & human goals." }
+                                  ].map((point, idx) => (
+                                    <motion.div
+                                      key={idx}
+                                      initial={{ opacity: 0, x: -20 }}
+                                      animate={{ opacity: 1, x: 0 }}
+                                      transition={{ delay: 0.5 + idx * 0.1, duration: 0.8, ease: APPLE_EASE }}
+                                      style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}
+                                    >
+                                      <div style={{ 
+                                        fontSize: '0.9rem', 
+                                        fontWeight: 900, 
+                                        color: '#000',
+                                        background: 'white',
+                                        padding: '6px 12px',
+                                        borderRadius: '2px',
+                                        fontFamily: 'monospace',
+                                        boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
+                                      }}>
+                                        0{idx + 1}
+                                      </div>
+                                      <div>
+                                        <div style={{ fontSize: '1.2rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.4rem', letterSpacing: '-0.02em', color: '#fff' }}>
+                                          {point.title}
+                                        </div>
+                                        <div style={{ fontSize: '1rem', fontWeight: 400, color: 'rgba(255,255,255,0.7)', lineHeight: 1.3 }}>
+                                          {point.desc}
+                                        </div>
+                                      </div>
+                                    </motion.div>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         </div>
                       </motion.div>
                       
@@ -920,75 +1008,10 @@ const PresentationPage = () => {
                           backgroundColor: 'white',
                           zIndex: 25,
                           opacity: 1,
+                          overflow: 'hidden'
                         }}
                       >
-                        {/* Full Screen Video Background */}
-                        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }}>
-                          <VideoHighlightCarousel />
-                          <div style={{ 
-                            position: 'absolute', 
-                            top: 0, 
-                            left: 0, 
-                            width: '100%', 
-                            height: '100%', 
-                            background: 'linear-gradient(to right, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.2) 100%)',
-                            zIndex: 2
-                          }} />
-                        </div>
-
-                        {/* Overlaid Content */}
-                        <div style={{ 
-                          position: 'relative',
-                          zIndex: 3,
-                          height: '100%',
-                          padding: '6rem 4rem 2rem 6rem',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'center'
-                        }}>
-                          <div style={{ 
-                            display: 'grid', 
-                            gridTemplateColumns: 'repeat(1, 1fr)', 
-                            gap: '3rem',
-                            maxWidth: '500px'
-                          }}>
-                            {[
-                              { title: "LEAD TEAMS", desc: "Shaping high-performing design squads." },
-                              { title: "PRODUCT VISION", desc: "Strategy for global digital ecosystems." },
-                              { title: "DESIGN OPS", desc: "Optimizing workflows and scalability." },
-                              { title: "USER CENTERED", desc: "Aligned with business & human goals." }
-                            ].map((point, idx) => (
-                              <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 1.4 + idx * 0.15, duration: 0.8, ease: APPLE_EASE }}
-                                style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}
-                              >
-                                <div style={{ 
-                                  fontSize: '0.9rem', 
-                                  fontWeight: 900, 
-                                  color: 'var(--novartis-primary)',
-                                  background: 'white',
-                                  padding: '6px 12px',
-                                  borderRadius: '2px',
-                                  fontFamily: 'monospace',
-                                  boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
-                                }}>
-                                  0{idx + 1}
-                                </div>
-                                <div>
-                                  <div style={{ fontSize: '1.4rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.6rem', letterSpacing: '-0.02em', color: '#000' }}>
-                                    {point.title}
-                                  </div>
-                                  <div style={{ fontSize: '1.1rem', fontWeight: 400, color: 'rgba(0,0,0,0.7)', lineHeight: 1.4 }}>
-                                    {point.desc}
-                                  </div>
-                                </div>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </div>
+                        <VideoHighlightCarousel />
                       </motion.div>
                     </>
                   )}
