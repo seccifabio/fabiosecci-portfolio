@@ -910,8 +910,8 @@ const PresentationPage = () => {
                           {/* Logo and Date Container */}
                           <motion.div 
                             animate={{ 
-                              y: introStage === 1 ? 0 : -250,
-                              scale: introStage === 1 ? 1 : 0.65
+                              y: introStage === 2 ? -210 : 0,
+                              scale: introStage === 2 ? 0.55 : 0.85
                             }}
                             transition={{ duration: 1, ease: APPLE_EASE }}
                             style={{ 
@@ -927,7 +927,7 @@ const PresentationPage = () => {
                               transition={{ delay: 0.6, duration: 1, ease: APPLE_EASE }}
                               src={getAssetPath('/Brands/TOIQFStYoBqXsOH4j07VJf0B8.avif')}
                               alt="Novartis Logo"
-                              style={{ width: '30vw', height: 'auto', filter: 'brightness(0) invert(1)' }}
+                              style={{ width: '24vw', height: 'auto', filter: 'brightness(0) invert(1)' }}
                             />
                             <motion.div
                               initial={{ opacity: 0, y: 20 }}
