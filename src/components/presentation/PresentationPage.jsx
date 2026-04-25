@@ -696,6 +696,24 @@ const PresentationPage = () => {
   };
 
   useEffect(() => {
+    // Auto-advance introStage for Experience slide
+    if (currentSlide === 2 && introStage === 1) {
+      const timer = setTimeout(() => {
+        setIntroStage(2);
+      }, 2000); // 2 second delay before shrinking logo and showing bullets
+      return () => clearTimeout(timer);
+    }
+    
+    // Auto-advance introStage for Intro Split slide (Slide 0)
+    if (currentSlide === 0 && introStage === 0) {
+      const timer = setTimeout(() => {
+        setIntroStage(1);
+      }, 3500);
+      return () => clearTimeout(timer);
+    }
+  }, [currentSlide, introStage]);
+
+  useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
       if (e.key === 'ArrowLeft') prevSlide();
