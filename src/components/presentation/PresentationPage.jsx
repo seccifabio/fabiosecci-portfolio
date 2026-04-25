@@ -541,6 +541,11 @@ const PresentationPage = () => {
       return;
     }
 
+    if (current.category === '[Experience]' && introStage === 0) {
+      setIntroStage(1);
+      return;
+    }
+
     const nextIndex = (currentSlide + 1) % slides.length;
     const type = slides[nextIndex].transition || "horizontal";
     
@@ -566,7 +571,7 @@ const PresentationPage = () => {
     setCurrentSlide(prevIndex);
     
     // Set to last stage if it's a multi-stage slide
-    if (slides[prevIndex].layout === 'intro-split' || slides[prevIndex].category === '[Heritage]') {
+    if (slides[prevIndex].layout === 'intro-split' || slides[prevIndex].category === '[Heritage]' || slides[prevIndex].category === '[Experience]') {
       setIntroStage(1);
     } else {
       setIntroStage(0);
@@ -709,6 +714,80 @@ const PresentationPage = () => {
                         </div>
                       </div>
                     </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : current.category === '[Experience]' ? (
+              <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <motion.div
+                  animate={{ 
+                    opacity: introStage === 0 ? 1 : 0.05,
+                    filter: introStage === 0 ? 'blur(0px)' : 'blur(10px)',
+                    x: introStage === 0 ? 0 : '10vw'
+                  }}
+                  transition={{ duration: 1.2, ease: APPLE_EASE }}
+                  style={{ width: '100%', maxWidth: '1400px' }}
+                >
+                  <div style={{ fontSize: '1rem', fontWeight: 300, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', fontFamily: 'monospace', opacity: 0.3 }}>
+                    {current.category}
+                  </div>
+                  <div style={{ fontSize: 'clamp(5rem, 11vw, 12rem)', fontWeight: 900, lineHeight: 0.8, letterSpacing: '-0.07em', textTransform: 'uppercase' }}>
+                    {renderHeadline(current.headline, current.accent)}
+                  </div>
+                  <div style={{ width: '100%' }}>
+                    {current.body}
+                  </div>
+                </motion.div>
+
+                <AnimatePresence>
+                  {introStage === 1 && (
+                    <>
+                      <motion.div
+                        initial={{ x: '-100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '-100%' }}
+                        transition={{ duration: 1.2, ease: APPLE_EASE }}
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 'calc(-50vw + 50%)',
+                          width: '50vw',
+                          height: '100%',
+                          backgroundColor: 'var(--novartis-primary)',
+                          zIndex: 30,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          boxShadow: '20px 0 50px rgba(0,0,0,0.1)'
+                        }}
+                      >
+                        <motion.img
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.6, duration: 1, ease: APPLE_EASE }}
+                          src={getAssetPath('/Brands/TOIQFStYoBqXsOH4j07VJf0B8.avif')}
+                          alt="Novartis Logo"
+                          style={{ width: '30vw', height: 'auto', filter: 'brightness(0) invert(1)' }}
+                        />
+                      </motion.div>
+                      
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1.2 }}
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          right: 'calc(-50vw + 50%)',
+                          width: '50vw',
+                          height: '100%',
+                          backgroundColor: 'white',
+                          zIndex: 25,
+                          opacity: 1
+                        }}
+                      />
+                    </>
                   )}
                 </AnimatePresence>
               </div>
