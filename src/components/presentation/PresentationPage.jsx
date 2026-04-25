@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Droplets, Dog, GraduationCap, X, Clock, Headphones, RefreshCw, Coffee } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -311,30 +311,36 @@ const Slide = ({ children, background = "white", color = "black", custom, fullWi
 };
 
 const VideoHighlightCarousel = () => {
-  const videos = [
-    '/Video-HL/1.mp4',
-    '/Video-HL/2.mp4',
-    '/Video-HL/3.mp4'
+  const videoData = [
+    { src: '/Video-HL/1.mp4', start: 2, end: 10 },
+    { src: '/Video-HL/2.mp4', start: 8, end: 15 },
+    { src: '/Video-HL/3.mp4', start: 14, end: 35 }
   ];
   const [index, setIndex] = useState(0);
+  const current = videoData[index];
+  const duration = (current.end - current.start) * 1000;
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % videos.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [videos.length]);
+    const timer = setTimeout(() => {
+      setIndex((prev) => (prev + 1) % videoData.length);
+    }, duration);
+    return () => clearTimeout(timer);
+  }, [index, duration]);
+
+  const handleLoadedMetadata = (e) => {
+    e.target.currentTime = current.start;
+  };
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
       <AnimatePresence mode="wait">
         <motion.video
-          key={videos[index]}
-          src={getAssetPath(videos[index])}
+          key={current.src}
+          src={getAssetPath(current.src)}
           autoPlay
           muted
-          loop
           playsInline
+          onLoadedMetadata={handleLoadedMetadata}
           initial={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
           animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
           exit={{ opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
@@ -346,26 +352,6 @@ const VideoHighlightCarousel = () => {
           }}
         />
       </AnimatePresence>
-      <div style={{ 
-        position: 'absolute', 
-        bottom: '2rem', 
-        right: '2rem', 
-        display: 'flex', 
-        gap: '0.5rem',
-        zIndex: 10
-      }}>
-        {videos.map((_, i) => (
-          <div 
-            key={i}
-            style={{ 
-              width: '40px', 
-              height: '2px', 
-              backgroundColor: i === index ? 'white' : 'rgba(255,255,255,0.3)',
-              transition: 'all 0.3s'
-            }}
-          />
-        ))}
-      </div>
     </div>
   );
 };
