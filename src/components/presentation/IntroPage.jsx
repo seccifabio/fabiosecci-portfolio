@@ -548,7 +548,7 @@ const IntroPage = () => {
     {
       id: 5,
       category: "[Beyond]",
-      headline: "outside Work",
+      headline: "outside Work.",
       body: (
         <div style={{ 
           display: 'flex', 

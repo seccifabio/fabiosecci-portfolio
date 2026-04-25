@@ -321,7 +321,7 @@ const PresentationPage = () => {
       id: 1,
       headline: <RotatingGreeting />,
       subHeader: "I’m Fabio Secci",
-      body: <span>Your <Highlighter delay={1.2} color="rgba(255,255,255,0.2)">Head of Design</Highlighter></span>,
+      body: <span>Your <Highlighter delay={1.2} color="rgba(255,255,255,0.2)">Head of DD&IT EXP Design</Highlighter></span>,
       background: "orange",
       color: "white",
       layout: "intro-split",
@@ -460,7 +460,7 @@ const PresentationPage = () => {
     {
       id: 8,
       category: "[Beyond]",
-      headline: "outside Work:",
+      headline: "outside Work.",
       body: (
         <div style={{ 
           display: 'flex', 
@@ -516,7 +516,7 @@ const PresentationPage = () => {
               y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
             }}
           >
-            <Coffee size={80} strokeWidth={1} color="var(--novartis-primary)" />
+            <Coffee size={80} strokeWidth={1} color="white" />
           </motion.div>
         </div>
       ),
@@ -639,7 +639,7 @@ const PresentationPage = () => {
           background={current.background} 
           color={current.color} 
           custom={{ direction, type: transitionType }}
-          fullWidth={!!current.content || current.category === '[Heritage]' || current.layout === 'education'}
+          fullWidth={!!current.content || current.layout === 'education'}
         >
           <div style={{ 
             width: '100%', 
