@@ -171,6 +171,64 @@ const RoleRotation = () => {
   );
 };
 
+const DNARotation = () => {
+  const phrases = ["DON'T CHASE CHANGE.", "SHAPE IT."];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % phrases.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [phrases.length]);
+
+  return (
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'flex-start',
+      overflow: 'visible',
+      height: 'clamp(4rem, 8vw, 10rem)',
+      justifyContent: 'center'
+    }}>
+      <AnimatePresence mode="popLayout">
+        <motion.div
+          key={phrases[index]}
+          style={{ display: 'flex', flexWrap: 'wrap' }}
+        >
+          {phrases[index].split("").map((char, i) => (
+            <motion.span
+              key={`${phrases[index]}-${i}`}
+              initial={{ y: 40, opacity: 0, rotateX: -90 }}
+              animate={{ y: 0, opacity: 1, rotateX: 0 }}
+              exit={{ y: -40, opacity: 0, rotateX: 90 }}
+              transition={{ 
+                duration: 0.8, 
+                ease: NDS_EASE,
+                delay: i * 0.02 
+              }}
+              style={{
+                fontSize: 'clamp(4rem, 7.5vw, 10rem)',
+                lineHeight: 0.8,
+                fontWeight: 900,
+                letterSpacing: '-0.07em',
+                textTransform: 'uppercase',
+                display: 'inline-block',
+                transformOrigin: 'center center',
+                perspective: '1000px',
+                color: 'white',
+                whiteSpace: char === ' ' ? 'pre' : 'normal'
+              }}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+};
+
 const ValuesRotation = () => {
   const values = ["INSPIRED.", "CURIOUS.", "UNBOSSED.", "INTEGRITY."];
   const [index, setIndex] = useState(0);
@@ -452,7 +510,7 @@ const PresentationPage = () => {
     {
       id: 5,
       category: "[DNA]",
-      headline: "DON’T CHASE\nCHANGE — SHAPE IT.",
+      headline: <DNARotation />,
       body: [
         <span>Smoothing <Highlighter delay={1}>friction</Highlighter></span>,
         <span>Driving <Highlighter delay={1.2}>efficiency</Highlighter></span>,
