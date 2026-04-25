@@ -173,8 +173,8 @@ const RoleRotation = () => {
 
 const DNARotation = () => {
   const phrases = [
-    ["DON'T CHASE", "CHANGE."],
-    ["SHAPE IT."]
+    ["DON'T CHASE", "CHANGE ."],
+    ["SHAPE IT ."]
   ];
   const [index, setIndex] = useState(0);
 
