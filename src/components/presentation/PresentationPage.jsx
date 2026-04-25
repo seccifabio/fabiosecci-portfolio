@@ -871,19 +871,39 @@ const PresentationPage = () => {
                           backgroundColor: 'var(--novartis-primary)',
                           zIndex: 30,
                           display: 'flex',
+                          flexDirection: 'column',
                           alignItems: 'center',
                           justifyContent: 'center',
                           boxShadow: '20px 0 50px rgba(0,0,0,0.1)'
                         }}
                       >
-                        <motion.img
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.6, duration: 1, ease: APPLE_EASE }}
-                          src={getAssetPath('/Brands/TOIQFStYoBqXsOH4j07VJf0B8.avif')}
-                          alt="Novartis Logo"
-                          style={{ width: '30vw', height: 'auto', filter: 'brightness(0) invert(1)' }}
-                        />
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
+                          <motion.img
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.6, duration: 1, ease: APPLE_EASE }}
+                            src={getAssetPath('/Brands/TOIQFStYoBqXsOH4j07VJf0B8.avif')}
+                            alt="Novartis Logo"
+                            style={{ width: '30vw', height: 'auto', filter: 'brightness(0) invert(1)' }}
+                          />
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 0.6, y: 0 }}
+                            transition={{ delay: 1, duration: 1, ease: APPLE_EASE }}
+                            style={{
+                              fontFamily: 'monospace',
+                              fontSize: '1rem',
+                              letterSpacing: '0.3em',
+                              color: 'white',
+                              border: '1px solid rgba(255,255,255,0.3)',
+                              padding: '8px 20px',
+                              borderRadius: '20px',
+                              marginTop: '1rem'
+                            }}
+                          >
+                            2021 — PRESENT
+                          </motion.div>
+                        </div>
                       </motion.div>
                       
                       <motion.div
@@ -900,10 +920,64 @@ const PresentationPage = () => {
                           backgroundColor: 'white',
                           zIndex: 25,
                           opacity: 1,
-                          overflow: 'hidden'
+                          display: 'flex',
+                          flexDirection: 'column'
                         }}
                       >
-                        <VideoHighlightCarousel />
+                        {/* Upper: Bullet Points */}
+                        <div style={{ 
+                          flex: '0 0 50%', 
+                          padding: '6rem 4rem 2rem 6rem',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'center'
+                        }}>
+                          <div style={{ 
+                            display: 'grid', 
+                            gridTemplateColumns: 'repeat(2, 1fr)', 
+                            gap: '2.5rem 4rem'
+                          }}>
+                            {[
+                              { title: "LEAD TEAMS", desc: "Shaping high-performing design squads." },
+                              { title: "PRODUCT VISION", desc: "Strategy for global digital ecosystems." },
+                              { title: "DESIGN OPS", desc: "Optimizing workflows and scalability." },
+                              { title: "USER CENTERED", desc: "Aligned with business & human goals." }
+                            ].map((point, idx) => (
+                              <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 1.2 + idx * 0.1, duration: 0.8, ease: APPLE_EASE }}
+                                style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}
+                              >
+                                <div style={{ 
+                                  fontSize: '0.8rem', 
+                                  fontWeight: 900, 
+                                  color: 'var(--novartis-primary)',
+                                  background: 'rgba(0,0,0,0.03)',
+                                  padding: '4px 8px',
+                                  borderRadius: '2px',
+                                  fontFamily: 'monospace'
+                                }}>
+                                  0{idx + 1}
+                                </div>
+                                <div>
+                                  <div style={{ fontSize: '1.1rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.4rem', letterSpacing: '-0.02em' }}>
+                                    {point.title}
+                                  </div>
+                                  <div style={{ fontSize: '0.9rem', fontWeight: 300, opacity: 0.6, lineHeight: 1.3 }}>
+                                    {point.desc}
+                                  </div>
+                                </div>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Lower: Video Carousel */}
+                        <div style={{ flex: '1', position: 'relative', overflow: 'hidden' }}>
+                          <VideoHighlightCarousel />
+                        </div>
                       </motion.div>
                     </>
                   )}
