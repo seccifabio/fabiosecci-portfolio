@@ -943,7 +943,7 @@ const PresentationPage = () => {
                                 borderRadius: '20px'
                               }}
                             >
-                              2021 — PRESENT
+                              LATEST EXPERIENCE
                             </motion.div>
                           </motion.div>
 
