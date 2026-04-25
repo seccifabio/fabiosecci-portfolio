@@ -920,13 +920,25 @@ const PresentationPage = () => {
                           backgroundColor: 'white',
                           zIndex: 25,
                           opacity: 1,
-                          display: 'flex',
-                          flexDirection: 'column'
-                        }}
-                      >
-                        {/* Upper: Bullet Points */}
+                        {/* Full Screen Video Background */}
+                        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }}>
+                          <VideoHighlightCarousel />
+                          <div style={{ 
+                            position: 'absolute', 
+                            top: 0, 
+                            left: 0, 
+                            width: '100%', 
+                            height: '100%', 
+                            background: 'linear-gradient(to right, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.2) 100%)',
+                            zIndex: 2
+                          }} />
+                        </div>
+
+                        {/* Overlaid Content */}
                         <div style={{ 
-                          flex: '0 0 50%', 
+                          position: 'relative',
+                          zIndex: 3,
+                          height: '100%',
                           padding: '6rem 4rem 2rem 6rem',
                           display: 'flex',
                           flexDirection: 'column',
@@ -934,8 +946,9 @@ const PresentationPage = () => {
                         }}>
                           <div style={{ 
                             display: 'grid', 
-                            gridTemplateColumns: 'repeat(2, 1fr)', 
-                            gap: '2.5rem 4rem'
+                            gridTemplateColumns: 'repeat(1, 1fr)', 
+                            gap: '3rem',
+                            maxWidth: '500px'
                           }}>
                             {[
                               { title: "LEAD TEAMS", desc: "Shaping high-performing design squads." },
@@ -945,38 +958,34 @@ const PresentationPage = () => {
                             ].map((point, idx) => (
                               <motion.div
                                 key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 1.2 + idx * 0.1, duration: 0.8, ease: APPLE_EASE }}
-                                style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 1.4 + idx * 0.15, duration: 0.8, ease: APPLE_EASE }}
+                                style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}
                               >
                                 <div style={{ 
-                                  fontSize: '0.8rem', 
+                                  fontSize: '0.9rem', 
                                   fontWeight: 900, 
                                   color: 'var(--novartis-primary)',
-                                  background: 'rgba(0,0,0,0.03)',
-                                  padding: '4px 8px',
+                                  background: 'white',
+                                  padding: '6px 12px',
                                   borderRadius: '2px',
-                                  fontFamily: 'monospace'
+                                  fontFamily: 'monospace',
+                                  boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
                                 }}>
                                   0{idx + 1}
                                 </div>
                                 <div>
-                                  <div style={{ fontSize: '1.1rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.4rem', letterSpacing: '-0.02em' }}>
+                                  <div style={{ fontSize: '1.4rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.6rem', letterSpacing: '-0.02em', color: '#000' }}>
                                     {point.title}
                                   </div>
-                                  <div style={{ fontSize: '0.9rem', fontWeight: 300, opacity: 0.6, lineHeight: 1.3 }}>
+                                  <div style={{ fontSize: '1.1rem', fontWeight: 400, color: 'rgba(0,0,0,0.7)', lineHeight: 1.4 }}>
                                     {point.desc}
                                   </div>
                                 </div>
                               </motion.div>
                             ))}
                           </div>
-                        </div>
-
-                        {/* Lower: Video Carousel */}
-                        <div style={{ flex: '1', position: 'relative', overflow: 'hidden' }}>
-                          <VideoHighlightCarousel />
                         </div>
                       </motion.div>
                     </>
