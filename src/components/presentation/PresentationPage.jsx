@@ -971,17 +971,17 @@ const PresentationPage = () => {
                                   width: '100%'
                                 }}>
                                   {[
-                                    { title: "LEAD TEAMS", desc: "Shaping high-performing design squads." },
-                                    { title: "PRODUCT VISION", desc: "Strategy for global digital ecosystems." },
-                                    { title: "DESIGN OPS", desc: "Optimizing workflows and scalability." },
-                                    { title: "USER CENTERED", desc: "Aligned with business & human goals." }
-                                  ].map((point, idx) => (
+                                    "LEAD TEAMS",
+                                    "PRODUCT VISION",
+                                    "DESIGN OPS",
+                                    "USER CENTERED"
+                                  ].map((title, idx) => (
                                     <motion.div
                                       key={idx}
                                       initial={{ opacity: 0, x: -20 }}
                                       animate={{ opacity: 1, x: 0 }}
                                       transition={{ delay: 0.5 + idx * 0.1, duration: 0.8, ease: APPLE_EASE }}
-                                      style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}
+                                      style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}
                                     >
                                       <div style={{ 
                                         fontSize: '0.9rem', 
@@ -995,13 +995,8 @@ const PresentationPage = () => {
                                       }}>
                                         0{idx + 1}
                                       </div>
-                                      <div>
-                                        <div style={{ fontSize: '1.2rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.4rem', letterSpacing: '-0.02em', color: '#fff' }}>
-                                          {point.title}
-                                        </div>
-                                        <div style={{ fontSize: '1rem', fontWeight: 400, color: 'rgba(255,255,255,0.7)', lineHeight: 1.3 }}>
-                                          {point.desc}
-                                        </div>
+                                      <div style={{ fontSize: '1.4rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '-0.02em', color: '#fff' }}>
+                                        {title}
                                       </div>
                                     </motion.div>
                                   ))}
