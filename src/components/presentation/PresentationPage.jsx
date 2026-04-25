@@ -933,17 +933,16 @@ const PresentationPage = () => {
                               initial={{ opacity: 0, y: 20 }}
                               animate={{ opacity: 0.6, y: 0 }}
                               transition={{ delay: 1, duration: 1, ease: APPLE_EASE }}
-                              style={{
+                              <div style={{
                                 fontFamily: 'monospace',
-                                fontSize: '1rem',
-                                letterSpacing: '0.3em',
+                                fontSize: '0.9rem',
+                                letterSpacing: '0.15em',
                                 color: 'white',
-                                border: '1px solid rgba(255,255,255,0.3)',
-                                padding: '8px 20px',
-                                borderRadius: '20px'
-                              }}
-                            >
-                              LATEST EXPERIENCE
+                                opacity: 0.4,
+                                textTransform: 'uppercase'
+                              }}>
+                                [ LATEST EXPERIENCE ]
+                              </div>
                             </motion.div>
                           </motion.div>
 
@@ -971,10 +970,10 @@ const PresentationPage = () => {
                                   width: '100%'
                                 }}>
                                   {[
-                                    "LEAD TEAMS",
+                                    "LEAD CROSS TEAMS",
                                     "PRODUCT VISION",
                                     "DESIGN OPS",
-                                    "USER CENTERED"
+                                    "DESIGN CULTURE DNA"
                                   ].map((title, idx) => (
                                     <motion.div
                                       key={idx}
