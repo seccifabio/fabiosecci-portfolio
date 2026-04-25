@@ -603,7 +603,7 @@ const IntroPage = () => {
           marginTop: '1rem'
         }}>
           <div style={{ fontSize: 'clamp(1.2rem, 3vw, 1.6rem)', fontWeight: 300, opacity: 0.8 }}>
-            Water, Cicci & Hugo 🐾, music are my <Highlighter delay={1}>creative fuel</Highlighter> and <Highlighter delay={1.4}>reset</Highlighter>.
+            Nature, Cicci & Hugo 🐾, music are my <Highlighter delay={1}>creative fuel</Highlighter> and <Highlighter delay={1.4}>reset</Highlighter>.
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-4.5rem', width: '100%', paddingLeft: '8rem' }}>
             <BounceCards

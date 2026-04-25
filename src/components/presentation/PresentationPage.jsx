@@ -584,7 +584,7 @@ const PresentationPage = () => {
           marginTop: '1rem'
         }}>
           <div style={{ fontSize: '1.6rem', fontWeight: 300, opacity: 0.8, whiteSpace: 'nowrap' }}>
-            Water, Cicci & Hugo 🐾, music are my <Highlighter delay={1}>creative fuel</Highlighter> and <Highlighter delay={1.4}>reset</Highlighter>.
+            Nature, Cicci & Hugo 🐾, music are my <Highlighter delay={1}>creative fuel</Highlighter> and <Highlighter delay={1.4}>reset</Highlighter>.
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-4.5rem', width: '100%', paddingLeft: '8rem' }}>
             <BounceCards
