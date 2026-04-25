@@ -486,17 +486,17 @@ const PresentationPage = () => {
       layout: "grid",
       items: [
         { 
-          icon: <Headphones size={40} strokeWidth={1} color="var(--novartis-primary)" />, 
+          icon: <Headphones size={40} strokeWidth={1} color="white" />, 
           title: "LISTEN AND LEARN", 
           desc: <span>Learning with & from <Highlighter delay={1.4}>everyone.</Highlighter></span> 
         },
         { 
-          icon: <Clock size={40} strokeWidth={1} color="var(--novartis-primary)" />, 
+          icon: <Clock size={40} strokeWidth={1} color="white" />, 
           title: "8-MINUTE RULE", 
           desc: <span><Highlighter delay={1.2}>Skills,</Highlighter> <Highlighter delay={1.4}>experiences,</Highlighter> and <Highlighter delay={1.6}>challenges.</Highlighter></span> 
         },
         { 
-          icon: <RefreshCw size={40} strokeWidth={1} color="var(--novartis-primary)" />, 
+          icon: <RefreshCw size={40} strokeWidth={1} color="white" />, 
           title: "GROWTH", 
           desc: <span>Our <Highlighter delay={1.2}>purpose.</Highlighter> Finding <Highlighter delay={1.4}>what</Highlighter> and <Highlighter delay={1.6}>how.</Highlighter></span> 
         }
