@@ -584,7 +584,7 @@ const PresentationPage = () => {
           marginTop: '1rem'
         }}>
           <div style={{ fontSize: '1.6rem', fontWeight: 300, opacity: 0.8, whiteSpace: 'nowrap' }}>
-            Nature, water, Cicci & Hugo 🐾 are my <Highlighter delay={1}>creative fuel</Highlighter> and <Highlighter delay={1.4}>reset</Highlighter>.
+            Water, Cicci & Hugo 🐾, music are my <Highlighter delay={1}>creative fuel</Highlighter> and <Highlighter delay={1.4}>reset</Highlighter>.
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-4.5rem', width: '100%', paddingLeft: '8rem' }}>
             <BounceCards
@@ -592,7 +592,8 @@ const PresentationPage = () => {
               images={[
                 getAssetPath("/Videos/Wake.mp4"),
                 getAssetPath("/Videos/Cicci-hugo.mp4"),
-                getAssetPath("/Videos/Wing.mp4")
+                getAssetPath("/Videos/Wing.mp4"),
+                getAssetPath("/Videos/Music.mp4")
               ]}
               containerWidth={1200}
               containerHeight={550}
@@ -600,9 +601,10 @@ const PresentationPage = () => {
               animationStagger={0.08}
               easeType="elastic.out(1, 0.5)"
               transformStyles={[
-                "rotate(-10deg) translate(-350px)",
-                "rotate(0deg) translate(0px)",
-                "rotate(10deg) translate(350px)"
+                "rotate(-15deg) translate(-450px)",
+                "rotate(-5deg) translate(-150px)",
+                "rotate(5deg) translate(150px)",
+                "rotate(15deg) translate(450px)"
               ]}
               enableHover={false}
               cardWidth={350}
@@ -894,14 +896,13 @@ const PresentationPage = () => {
                           flexDirection: 'column',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          boxShadow: '20px 0 50px rgba(0,0,0,0.1)',
                           padding: '4rem'
                         }}
                       >
                         <div style={{ 
                           display: 'flex', 
                           flexDirection: 'column', 
-                          alignItems: 'center', 
+                          alignItems: 'flex-start', 
                           justifyContent: 'center',
                           width: '100%',
                           height: '100%',
@@ -910,35 +911,41 @@ const PresentationPage = () => {
                           {/* Logo and Date Container */}
                           <motion.div 
                             animate={{ 
-                              y: introStage === 2 ? -210 : 0,
-                              scale: introStage === 2 ? 0.55 : 0.85
+                              y: introStage === 2 ? -210 : 0
                             }}
                             transition={{ duration: 1, ease: APPLE_EASE }}
                             style={{ 
                               display: 'flex', 
                               flexDirection: 'column', 
-                              alignItems: 'center', 
-                              gap: '2rem' 
+                              alignItems: 'flex-start', 
+                              gap: '0.8rem' 
                             }}
                           >
                             <motion.img
                               initial={{ opacity: 0, scale: 0.8 }}
-                              animate={{ opacity: 1, scale: 1 }}
+                              animate={{ 
+                                opacity: 1, 
+                                scale: introStage === 2 ? 0.65 : 1 
+                              }}
                               transition={{ delay: 0.6, duration: 1, ease: APPLE_EASE }}
                               src={getAssetPath('/Brands/TOIQFStYoBqXsOH4j07VJf0B8.avif')}
                               alt="Novartis Logo"
-                              style={{ width: '24vw', height: 'auto', filter: 'brightness(0) invert(1)' }}
+                              style={{ width: '20vw', height: 'auto', filter: 'brightness(0) invert(1)' }}
                             />
                             <motion.div
                               initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 0.6, y: 0 }}
+                              animate={{ 
+                                opacity: 1, 
+                                y: 0
+                              }}
                               transition={{ delay: 1, duration: 1, ease: APPLE_EASE }}
+                            >
                               <div style={{
                                 fontFamily: 'monospace',
-                                fontSize: '0.9rem',
+                                fontSize: '0.75rem',
                                 letterSpacing: '0.15em',
                                 color: 'white',
-                                opacity: 0.4,
+                                opacity: 1,
                                 textTransform: 'uppercase'
                               }}>
                                 [ LATEST EXPERIENCE ]
@@ -956,49 +963,76 @@ const PresentationPage = () => {
                                 transition={{ duration: 0.8, ease: APPLE_EASE, delay: 0.3 }}
                                 style={{ 
                                   position: 'absolute',
-                                  bottom: '5vh',
-                                  width: '100%',
+                                  bottom: '10vh',
                                   display: 'flex',
-                                  justifyContent: 'center'
+                                  flexDirection: 'column',
+                                  alignItems: 'flex-start',
+                                  gap: '1.2rem',
+                                  left: 0
                                 }}
                               >
                                 <div style={{ 
-                                  display: 'grid', 
-                                  gridTemplateColumns: 'repeat(1, 1fr)', 
-                                  gap: '2.5rem',
-                                  maxWidth: '450px',
-                                  width: '100%'
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  alignItems: 'flex-start',
+                                  gap: '1.2rem',
+                                  width: 'auto',
+                                  maxWidth: '450px'
                                 }}>
+                                  <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 0.5 }}
+                                    transition={{ delay: 0.4, duration: 1 }}
+                                    style={{ 
+                                      fontFamily: 'monospace', 
+                                      fontSize: '0.7rem', 
+                                      letterSpacing: '0.3em', 
+                                      color: 'white',
+                                      textTransform: 'uppercase'
+                                    }}
+                                  >
+                                    CORE FOCUS AREAS
+                                  </motion.div>
+                                  <div style={{ 
+                                    display: 'grid', 
+                                    gridTemplateColumns: 'repeat(1, 1fr)', 
+                                    gap: '1rem',
+                                    width: 'auto'
+                                  }}>
                                   {[
                                     "LEAD CROSS TEAMS",
                                     "PRODUCT VISION",
                                     "DESIGN OPS",
-                                    "DESIGN CULTURE DNA"
+                                    "DESIGN CULTURE"
                                   ].map((title, idx) => (
                                     <motion.div
                                       key={idx}
                                       initial={{ opacity: 0, x: -20 }}
                                       animate={{ opacity: 1, x: 0 }}
                                       transition={{ delay: 0.5 + idx * 0.1, duration: 0.8, ease: APPLE_EASE }}
-                                      style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}
+                                      style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}
                                     >
-                                      <div style={{ 
-                                        fontSize: '0.9rem', 
-                                        fontWeight: 900, 
-                                        color: '#000',
-                                        background: 'white',
-                                        padding: '6px 12px',
-                                        borderRadius: '2px',
-                                        fontFamily: 'monospace',
-                                        boxShadow: '0 4px 15px rgba(0,0,0,0.05)'
-                                      }}>
-                                        0{idx + 1}
-                                      </div>
+                                      <motion.div
+                                        initial={{ rotate: 0, scale: 0 }}
+                                        animate={{ rotate: 360, scale: 1 }}
+                                        transition={{ 
+                                          delay: 0.8 + idx * 0.1, 
+                                          duration: 1.5, 
+                                          ease: "easeOut" 
+                                        }}
+                                        style={{ 
+                                          width: '14px', 
+                                          height: '14px', 
+                                          backgroundColor: '#fff',
+                                          borderRadius: '2px'
+                                        }}
+                                      />
                                       <div style={{ fontSize: '1.4rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '-0.02em', color: '#fff' }}>
                                         {title}
                                       </div>
                                     </motion.div>
                                   ))}
+                                  </div>
                                 </div>
                               </motion.div>
                             )}

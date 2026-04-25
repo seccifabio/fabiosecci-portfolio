@@ -150,6 +150,11 @@ export default function BounceCards({
               loop
               muted
               playsInline
+              ref={(el) => {
+                if (el) {
+                  el.playbackRate = src.includes('Music.mp4') ? 0.6 : 1.0;
+                }
+              }}
               style={{ 
                 position: 'absolute',
                 top: 0,
@@ -159,7 +164,8 @@ export default function BounceCards({
                 objectFit: 'cover',
                 display: 'block',
                 transform: idx === 1 ? 'scale(1.5)' : 'scale(1.2)',
-                transformOrigin: 'center'
+                transformOrigin: 'center',
+                filter: src.includes('Music.mp4') ? 'saturate(0.8) contrast(1.1)' : 'none'
               }}
             />
           ) : (

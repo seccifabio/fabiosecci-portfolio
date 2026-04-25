@@ -431,6 +431,52 @@ const Slide = ({ children, background = "white", color = "black", custom, fullWi
   );
 };
 
+const VideoHighlightCarousel = () => {
+  const videoData = [
+    { src: '/Video-HL/1.mp4', start: 2, end: 10 },
+    { src: '/Video-HL/2.mp4', start: 8, end: 15 },
+    { src: '/Video-HL/3.mp4', start: 14, end: 35 }
+  ];
+  const [index, setIndex] = useState(0);
+  const current = videoData[index];
+  const duration = (current.end - current.start) * 1000;
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIndex((prev) => (prev + 1) % videoData.length);
+    }, duration);
+    return () => clearTimeout(timer);
+  }, [index, duration]);
+
+  const handleLoadedMetadata = (e) => {
+    e.target.currentTime = current.start;
+  };
+
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
+      <AnimatePresence mode="wait">
+        <motion.video
+          key={current.src}
+          src={getAssetPath(current.src)}
+          autoPlay
+          muted
+          playsInline
+          onLoadedMetadata={handleLoadedMetadata}
+          initial={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          exit={{ opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
+          }}
+        />
+      </AnimatePresence>
+    </div>
+  );
+};
+
 const IntroPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -557,7 +603,7 @@ const IntroPage = () => {
           marginTop: '1rem'
         }}>
           <div style={{ fontSize: 'clamp(1.2rem, 3vw, 1.6rem)', fontWeight: 300, opacity: 0.8 }}>
-            Nature, water, Cicci & Hugo 🐾 are my <Highlighter delay={1}>creative fuel</Highlighter> and <Highlighter delay={1.4}>reset</Highlighter>.
+            Water, Cicci & Hugo 🐾, music are my <Highlighter delay={1}>creative fuel</Highlighter> and <Highlighter delay={1.4}>reset</Highlighter>.
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-4.5rem', width: '100%', paddingLeft: '8rem' }}>
             <BounceCards
@@ -565,7 +611,8 @@ const IntroPage = () => {
               images={[
                 getAssetPath("/Videos/Wake.mp4"),
                 getAssetPath("/Videos/Cicci-hugo.mp4"),
-                getAssetPath("/Videos/Wing.mp4")
+                getAssetPath("/Videos/Wing.mp4"),
+                getAssetPath("/Videos/Music.mp4")
               ]}
               containerWidth={1200}
               containerHeight={550}
@@ -573,9 +620,10 @@ const IntroPage = () => {
               animationStagger={0.08}
               easeType="elastic.out(1, 0.5)"
               transformStyles={[
-                "rotate(-10deg) translate(-350px)",
-                "rotate(0deg) translate(0px)",
-                "rotate(10deg) translate(350px)"
+                "rotate(-15deg) translate(-450px)",
+                "rotate(-5deg) translate(-150px)",
+                "rotate(5deg) translate(150px)",
+                "rotate(15deg) translate(450px)"
               ]}
               enableHover={false}
               cardWidth={350}
@@ -675,6 +723,10 @@ const IntroPage = () => {
     if (showHint) setShowHint(false);
     
     // Check for multi-stage slides
+    if (currentSlide === 2 && introStage < 2) {
+      setIntroStage(introStage + 1);
+      return;
+    }
     if ((currentSlide === 0 || currentSlide === 1) && introStage === 0) {
       setIntroStage(1);
       return;
@@ -692,8 +744,8 @@ const IntroPage = () => {
     if (e) e.stopPropagation();
     if (showHint) setShowHint(false);
     
-    if ((currentSlide === 0 || currentSlide === 1) && introStage === 1) {
-      setIntroStage(0);
+    if (introStage > 0) {
+      setIntroStage(introStage - 1);
       return;
     }
 
@@ -706,12 +758,32 @@ const IntroPage = () => {
     setCurrentSlide(prevIndex);
     
     // Set to last stage if it's a multi-stage slide
-    if (slides[prevIndex].layout === 'intro-split' || slides[prevIndex].category === '[Heritage]') {
+    if (prevIndex === 2) {
+      setIntroStage(2);
+    } else if (slides[prevIndex].layout === 'intro-split' || slides[prevIndex].category === '[Heritage]') {
       setIntroStage(1);
     } else {
       setIntroStage(0);
     }
   };
+
+  useEffect(() => {
+    // Auto-advance introStage for Experience slide
+    if (currentSlide === 2 && introStage === 1) {
+      const timer = setTimeout(() => {
+        setIntroStage(2);
+      }, 2000); // 2 second delay before shrinking logo and showing bullets
+      return () => clearTimeout(timer);
+    }
+    
+    // Auto-advance introStage for Intro Split slide (Slide 0)
+    if ((currentSlide === 0 || currentSlide === 1) && introStage === 0) {
+      const timer = setTimeout(() => {
+        setIntroStage(1);
+      }, 3500);
+      return () => clearTimeout(timer);
+    }
+  }, [currentSlide, introStage]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -850,6 +922,215 @@ const IntroPage = () => {
                         </div>
                       </div>
                     </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : current.category === '[Experience]' ? (
+              <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <motion.div
+                  animate={{ 
+                    opacity: introStage === 0 ? 1 : 0.05,
+                    filter: introStage === 0 ? 'blur(0px)' : 'blur(10px)',
+                    x: introStage === 0 ? 0 : '10vw'
+                  }}
+                  transition={{ duration: 1.2, ease: APPLE_EASE }}
+                  style={{ width: '100%', maxWidth: '1400px' }}
+                >
+                  <div style={{ fontSize: '1rem', fontWeight: 300, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', fontFamily: 'monospace', opacity: 0.3 }}>
+                    {current.category}
+                  </div>
+                  <div style={{ fontSize: 'clamp(5rem, 11vw, 12rem)', fontWeight: 900, lineHeight: 0.8, letterSpacing: '-0.07em', textTransform: 'uppercase' }}>
+                    {renderHeadline(current.headline, current.accent)}
+                  </div>
+                  <div style={{ width: '100%' }}>
+                    {current.body}
+                  </div>
+                </motion.div>
+
+                <AnimatePresence>
+                  {introStage >= 1 && (
+                    <>
+                      <motion.div
+                        initial={{ x: '-100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '-100%' }}
+                        transition={{ duration: 1.2, ease: APPLE_EASE }}
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 'calc(-50vw + 50%)',
+                          width: '50vw',
+                          height: '100%',
+                          backgroundColor: 'var(--novartis-primary)',
+                          zIndex: 30,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          padding: '4rem'
+                        }}
+                      >
+                        <div style={{ 
+                          display: 'flex', 
+                          flexDirection: 'column', 
+                          alignItems: 'flex-start', 
+                          justifyContent: 'center',
+                          width: '100%',
+                          height: '100%',
+                          position: 'relative'
+                        }}>
+                          {/* Logo and Date Container */}
+                          <motion.div 
+                            animate={{ 
+                              y: introStage === 2 ? -210 : 0
+                            }}
+                            transition={{ duration: 1, ease: APPLE_EASE }}
+                            style={{ 
+                              display: 'flex', 
+                              flexDirection: 'column', 
+                              alignItems: 'flex-start', 
+                              gap: '0.8rem' 
+                            }}
+                          >
+                            <motion.img
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              animate={{ 
+                                opacity: 1, 
+                                scale: introStage === 2 ? 0.65 : 1 
+                              }}
+                              transition={{ delay: 0.6, duration: 1, ease: APPLE_EASE }}
+                              src={getAssetPath('/Brands/TOIQFStYoBqXsOH4j07VJf0B8.avif')}
+                              alt="Novartis Logo"
+                              style={{ width: '20vw', height: 'auto', filter: 'brightness(0) invert(1)' }}
+                            />
+                            <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ 
+                                opacity: 1, 
+                                y: 0
+                              }}
+                              transition={{ delay: 1, duration: 1, ease: APPLE_EASE }}
+                            >
+                              <div style={{
+                                fontFamily: 'monospace',
+                                fontSize: '0.75rem',
+                                letterSpacing: '0.15em',
+                                color: 'white',
+                                opacity: 1,
+                                textTransform: 'uppercase'
+                              }}>
+                                [ LATEST EXPERIENCE ]
+                              </div>
+                            </motion.div>
+                          </motion.div>
+
+                          {/* Bullet Points Container */}
+                          <AnimatePresence>
+                            {introStage === 2 && (
+                              <motion.div 
+                                initial={{ opacity: 0, y: 50 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 50 }}
+                                transition={{ duration: 0.8, ease: APPLE_EASE, delay: 0.3 }}
+                                style={{ 
+                                  position: 'absolute',
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  alignItems: 'flex-start',
+                                  gap: '1.2rem',
+                                  left: 0,
+                                  bottom: '10vh'
+                                }}
+                              >
+                                <div style={{ 
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  alignItems: 'flex-start',
+                                  gap: '1.2rem',
+                                  width: 'auto',
+                                  maxWidth: '450px'
+                                }}>
+                                  <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 0.5 }}
+                                    transition={{ delay: 0.4, duration: 1 }}
+                                    style={{ 
+                                      fontFamily: 'monospace', 
+                                      fontSize: '0.7rem', 
+                                      letterSpacing: '0.3em', 
+                                      color: 'white',
+                                      textTransform: 'uppercase'
+                                    }}
+                                  >
+                                    CORE FOCUS AREAS
+                                  </motion.div>
+                                  <div style={{ 
+                                    display: 'grid', 
+                                    gridTemplateColumns: 'repeat(1, 1fr)', 
+                                    gap: '1rem',
+                                    width: 'auto'
+                                  }}>
+                                  {[
+                                    "LEAD CROSS TEAMS",
+                                    "PRODUCT VISION",
+                                    "DESIGN OPS",
+                                    "DESIGN CULTURE"
+                                  ].map((title, idx) => (
+                                    <motion.div
+                                      key={idx}
+                                      initial={{ opacity: 0, x: -20 }}
+                                      animate={{ opacity: 1, x: 0 }}
+                                      transition={{ delay: 0.5 + idx * 0.1, duration: 0.8, ease: APPLE_EASE }}
+                                      style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}
+                                    >
+                                      <motion.div
+                                        initial={{ rotate: 0, scale: 0 }}
+                                        animate={{ rotate: 360, scale: 1 }}
+                                        transition={{ 
+                                          delay: 0.8 + idx * 0.1, 
+                                          duration: 1.5, 
+                                          ease: "easeOut" 
+                                        }}
+                                        style={{ 
+                                          width: '14px', 
+                                          height: '14px', 
+                                          backgroundColor: '#fff',
+                                          borderRadius: '2px'
+                                        }}
+                                      />
+                                      <div style={{ fontSize: '1.4rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '-0.02em', color: '#fff' }}>
+                                        {title}
+                                      </div>
+                                    </motion.div>
+                                  ))}
+                                  </div>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      </motion.div>
+                      
+                      <motion.div
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '100%' }}
+                        transition={{ duration: 1.2, ease: APPLE_EASE }}
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          right: 'calc(-50vw + 50%)',
+                          width: '50vw',
+                          height: '100%',
+                          backgroundColor: 'white',
+                          zIndex: 25,
+                          opacity: 1,
+                          overflow: 'hidden'
+                        }}
+                      >
+                        <VideoHighlightCarousel />
+                      </motion.div>
+                    </>
                   )}
                 </AnimatePresence>
               </div>
