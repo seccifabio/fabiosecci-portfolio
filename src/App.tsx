@@ -35,7 +35,9 @@ function AnimatedRoutes() {
 
 function Content() {
   const location = useLocation();
-  const isPresentation = location.pathname === '/presentation' || location.pathname === '/intro' || location.pathname === '/beyond';
+  const isPresentation = location.pathname.startsWith('/presentation') || 
+                         location.pathname.startsWith('/intro') || 
+                         location.pathname.startsWith('/beyond');
 
   return (
     <div className="relative bg-black text-white min-h-screen selection:bg-white selection:text-black">

@@ -145,7 +145,7 @@ const careerData: CareerItem[] = [
 const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, index }) => {
   const ref = useRef(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const isInView = useInView(ref, { amount: 0.5 }); // Trigger when 50% of the section is visible
+  const isInView = useInView(ref, { amount: 0.1 }); // Reduced threshold for more reliable trigger
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -157,15 +157,21 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
   }, []);
 
   useEffect(() => {
-    if (isInView && videoRef.current) {
-      videoRef.current.play().catch(err => {
-        // Only log if it's not a user-interruption error which is common for autoplay
-        if (err.name !== 'AbortError') {
-          console.warn("Video playback error:", err);
-        }
-      });
-    } else if (!isInView && videoRef.current) {
-      videoRef.current.pause();
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isInView) {
+      video.muted = true; // Double-ensure muted for Safari
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          if (err.name !== 'AbortError') {
+            console.warn("Autoplay prevented:", err);
+          }
+        });
+      }
+    } else {
+      video.pause();
     }
   }, [isInView]);
 
@@ -227,10 +233,12 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
               data.id === 'wingfoiling' ? "scale-[1.2]" : ""
             )}
             src={getAssetPath(data.bgVideoUrl)}
-            autoPlay 
-            muted 
-            loop 
-            playsInline
+            autoPlay={true}
+            muted={true}
+            loop={true}
+            playsInline={true}
+            preload="auto"
+            controls={false}
             disablePictureInPicture
             controlsList="nodownload nofullscreen noremoteplayback"
             onContextMenu={(e) => e.preventDefault()}
@@ -258,22 +266,24 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className={cn("w-full", data.id === 'intro' ? "text-center" : "max-w-3xl")}
+            className={cn("w-full", data.id === 'intro' ? "text-center" : "text-left")}
           >
-            <div className={cn("flex items-center gap-4 mb-6", data.id === 'intro' ? "justify-center" : "")}>
+            <div className={cn("flex items-center gap-4 mb-6", data.id === 'intro' ? "justify-center" : "justify-start")}>
               <h2 className={cn(
                 "font-bold tracking-tight text-white drop-shadow-2xl uppercase flex items-center",
-                data.id === 'intro' ? "text-5xl md:text-8xl lg:text-9xl tracking-[0.1em] justify-center text-center" : "text-3xl md:text-5xl"
+                data.id === 'intro' ? "text-4xl md:text-8xl lg:text-9xl tracking-[0.1em] justify-center text-center" : "text-2xl md:text-5xl"
               )}>
-                <div className={cn("flex items-center", data.id === 'intro' ? "justify-center" : "")}>
-                  <motion.span
-                    initial={{ x: 0, opacity: 0 }}
-                    animate={isInView ? { x: 0, opacity: 1 } : { x: 0, opacity: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="inline-block"
-                  >
-                    [
-                  </motion.span>
+                <div className={cn("flex items-center", data.id === 'intro' ? "justify-center" : "justify-start")}>
+                  {(data.id === 'intro' || !isMobile) && (
+                    <motion.span
+                      initial={{ x: 0, opacity: 0 }}
+                      animate={isInView ? { x: 0, opacity: 1 } : { x: 0, opacity: 0 }}
+                      transition={{ duration: 0.6 }}
+                      className="inline-block"
+                    >
+                      [
+                    </motion.span>
+                  )}
                   
                   <motion.div 
                     className="flex items-center overflow-hidden"
@@ -281,7 +291,7 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
                     animate={isInView ? { width: "auto" } : { width: 0 }}
                     transition={{ duration: 1.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <span className="w-4 md:w-8" /> {/* Leading space */}
+                    <span className="w-2 md:w-4" /> {/* Leading space */}
                     {data.category.split("").map((letter, i) => (
                       <motion.span
                         key={i}
@@ -297,17 +307,19 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
                         {letter === " " ? "\u00A0" : letter}
                       </motion.span>
                     ))}
-                    <span className="w-4 md:w-8" /> {/* Trailing space */}
+                    <span className="w-2 md:w-4" /> {/* Trailing space */}
                   </motion.div>
 
-                  <motion.span
-                    initial={{ x: 0, opacity: 0 }}
-                    animate={isInView ? { x: 0, opacity: 1 } : { x: 0, opacity: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="inline-block"
-                  >
-                    ]
-                  </motion.span>
+                  {(data.id === 'intro' || !isMobile) && (
+                    <motion.span
+                      initial={{ x: 0, opacity: 0 }}
+                      animate={isInView ? { x: 0, opacity: 1 } : { x: 0, opacity: 0 }}
+                      transition={{ duration: 0.6 }}
+                      className="inline-block"
+                    >
+                      ]
+                    </motion.span>
+                  )}
                 </div>
               </h2>
             </div>
@@ -324,13 +336,13 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
                   times: [0, 0.1, 0.9, 1],
                   delay: 1.8 
                 }}
-                className="text-xs md:text-sm uppercase tracking-[0.3em] font-sans font-light text-white mt-4"
+                className="text-xs md:text-sm uppercase tracking-[0.3em] font-sans font-light text-white mt-4 text-center"
               >
                 A journey beyond the professional, shaped by sport and a deep passion for the water.
               </motion.p>
             )}
             
-            {data.achievements.length > 0 && (
+            {data.achievements.length > 0 && !(data.id === 'thanks' && isMobile) && (
               <ul className="space-y-4">
                 {data.achievements.map((achievement, i) => (
                   <motion.li 
@@ -340,7 +352,7 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
                     transition={{ duration: 0.5, delay: 0.4 + (i * 0.1) }}
                     className="text-lg md:text-xl text-gray-200 leading-relaxed font-light"
                   >
-                    <span className="text-center md:text-left">{achievement}</span>
+                    <span className="text-left">{achievement}</span>
                   </motion.li>
                 ))}
               </ul>

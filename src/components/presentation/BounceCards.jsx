@@ -146,10 +146,11 @@ export default function BounceCards({
           {src.endsWith('.mp4') ? (
             <video
               src={src}
-              autoPlay
-              loop
-              muted
-              playsInline
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              playsInline={true}
+              controls={false}
               ref={(el) => {
                 if (el) {
                   el.playbackRate = src.includes('Music.mp4') ? 0.6 : 1.0;
@@ -165,7 +166,8 @@ export default function BounceCards({
                 display: 'block',
                 transform: idx === 1 ? 'scale(1.5)' : 'scale(1.2)',
                 transformOrigin: 'center',
-                filter: src.includes('Music.mp4') ? 'saturate(0.8) contrast(1.1)' : 'none'
+                filter: src.includes('Music.mp4') ? 'saturate(0.8) contrast(1.1)' : 'none',
+                pointerEvents: 'none'
               }}
             />
           ) : (

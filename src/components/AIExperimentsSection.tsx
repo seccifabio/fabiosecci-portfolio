@@ -126,12 +126,13 @@ const ExperimentVisual = ({ videoUrl, onExpand }: { videoUrl: string, onExpand: 
           {videoUrl ? (
             <video
               src={getAssetPath(videoUrl)}
-              autoPlay
-              muted
-              loop
-              playsInline
+              autoPlay={true}
+              muted={true}
+              loop={true}
+              playsInline={true}
+              controls={false}
               onLoadedData={() => setIsLoading(false)}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover pointer-events-none"
             />
           ) : (
             <div className="w-full h-full bg-muted flex items-center justify-center text-muted uppercase font-mono text-xs" onMount={() => setIsLoading(false)}>Coming Soon</div>
@@ -248,11 +249,11 @@ export const AIExperimentsSection = () => {
           {isFullscreen && experiments[hoveredIndex] && (
             experiments[hoveredIndex].device === 'mobile' ? (
               <IphoneSkeleton onClose={() => setIsFullscreen(false)} projectName={experiments[hoveredIndex].title}>
-                <video src={getAssetPath(experiments[hoveredIndex].video)} autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <video src={getAssetPath(experiments[hoveredIndex].video)} autoPlay={true} muted={true} loop={true} playsInline={true} controls={false} className="w-full h-full object-cover pointer-events-none" />
               </IphoneSkeleton>
             ) : (
               <BrowserSkeleton onClose={() => setIsFullscreen(false)} projectName={experiments[hoveredIndex].title}>
-                <video src={getAssetPath(experiments[hoveredIndex].video)} autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <video src={getAssetPath(experiments[hoveredIndex].video)} autoPlay={true} muted={true} loop={true} playsInline={true} controls={false} className="w-full h-full object-cover pointer-events-none" />
               </BrowserSkeleton>
             )
           )}
@@ -282,7 +283,7 @@ export const AIExperimentsSection = () => {
                   "overflow-hidden rounded-lg bg-muted",
                   experiments[expandedIndex].device === 'mobile' ? "w-[280px] aspect-[9/19.5]" : "w-full aspect-video"
                 )}>
-                  <video src={getAssetPath(experiments[expandedIndex].video)} autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                  <video src={getAssetPath(experiments[expandedIndex].video)} autoPlay={true} muted={true} loop={true} playsInline={true} controls={false} className="w-full h-full object-cover pointer-events-none" />
                 </div>
               </div>
             </motion.div>

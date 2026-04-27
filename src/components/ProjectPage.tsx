@@ -176,7 +176,15 @@ export function ProjectPage() {
     >
       <div className="sticky top-0 z-0 w-full flex flex-col min-h-screen pb-12">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="w-full h-[60vh] md:h-[70vh] bg-zinc-900 overflow-hidden">
-          <video autoPlay muted loop playsInline className="w-full h-full object-cover" src={getAssetPath(project.videoUrl)} />
+          <video 
+            autoPlay={true} 
+            muted={true} 
+            loop={true} 
+            playsInline={true} 
+            controls={false}
+            className="w-full h-full object-cover pointer-events-none" 
+            src={getAssetPath(project.videoUrl)} 
+          />
         </motion.div>
 
         <div className="pt-8 md:pt-12 px-6 md:px-16 max-w-7xl mx-auto w-full flex-grow flex flex-col justify-center">

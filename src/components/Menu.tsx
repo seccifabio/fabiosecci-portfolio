@@ -19,6 +19,15 @@ export const Menu = ({ isOpen, onClose }: MenuProps) => {
   const isBeyondInView = useInView(beyondRef, { amount: 0.6, once: true });
   const navigate = useNavigate();
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       if (!containerRef.current) return;
@@ -110,18 +119,24 @@ export const Menu = ({ isOpen, onClose }: MenuProps) => {
                 navigate('/beyond');
               }}
             >
-              <div className="flex items-center text-5xl md:text-8xl font-display font-black uppercase tracking-tighter leading-none group">
+              <div className={cn(
+                "flex font-display font-black uppercase leading-none group",
+                isMobile ? "flex-col items-center gap-1 text-7xl" : "items-center text-5xl md:text-8xl"
+              )}>
                 {/* [ character (Index 0) */}
-                <div className="relative overflow-hidden flex items-center h-[1.1em]">
+                <div className={cn(
+                  "relative overflow-hidden flex items-center h-[1.1em]",
+                  isMobile && "rotate-[90deg]"
+                )}>
                   <motion.span
-                    animate={{ x: beyondExpanded ? -10 : 0 }}
+                    animate={{ x: 0, y: 0 }}
                     transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                     className="inline-block transition-transform duration-500 group-hover:-translate-y-[110%] leading-none"
                   >
                     [
                   </motion.span>
                   <motion.span
-                    animate={{ x: beyondExpanded ? -10 : 0 }}
+                    animate={{ x: 0, y: 0 }}
                     transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-0 flex items-center justify-center transition-transform duration-500 translate-y-[110%] group-hover:translate-y-0 leading-none pointer-events-none"
                   >
@@ -129,7 +144,7 @@ export const Menu = ({ isOpen, onClose }: MenuProps) => {
                   </motion.span>
                 </div>
                 
-                <div className="flex items-center overflow-hidden mx-2 md:mx-4">
+                <div className={cn("flex items-center overflow-hidden", isMobile ? "mx-0" : "mx-2 md:mx-4")}>
                   {/* B character (Index 1) */}
                   <div className="relative overflow-hidden flex items-center h-[1.1em]">
                     <span className="inline-block transition-transform duration-500 group-hover:-translate-y-[110%] leading-none" style={{ transitionDelay: '30ms' }}>
@@ -178,9 +193,12 @@ export const Menu = ({ isOpen, onClose }: MenuProps) => {
                 </div>
 
                 {/* ] character (Index 7) */}
-                <div className="relative overflow-hidden flex items-center h-[1.1em]">
+                <div className={cn(
+                  "relative overflow-hidden flex items-center h-[1.1em]",
+                  isMobile && "rotate-[90deg]"
+                )}>
                   <motion.span
-                    animate={{ x: beyondExpanded ? 10 : 0 }}
+                    animate={{ x: 0, y: 0 }}
                     transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                     className="inline-block transition-transform duration-500 group-hover:translate-y-[110%] leading-none"
                     style={{ transitionDelay: '210ms' }}
@@ -188,7 +206,7 @@ export const Menu = ({ isOpen, onClose }: MenuProps) => {
                     ]
                   </motion.span>
                   <motion.span
-                    animate={{ x: beyondExpanded ? 10 : 0 }}
+                    animate={{ x: 0, y: 0 }}
                     transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-0 flex items-center justify-center transition-transform duration-500 -translate-y-[110%] group-hover:translate-y-0 leading-none pointer-events-none"
                     style={{ transitionDelay: '210ms' }}
