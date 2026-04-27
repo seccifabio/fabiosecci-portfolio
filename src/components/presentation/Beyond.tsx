@@ -31,7 +31,7 @@ const careerData: CareerItem[] = [
   {
     id: "titles",
     category: "World & European Titles",
-    period: "[from 2018 to 2019]",
+    period: "from 2018 to 2019",
     icon: <Trophy className="w-8 h-8 text-yellow-400" />,
     achievements: ["Vice World Champion and European leader in Adaptive Wakesurf."],
     sources: [
@@ -45,7 +45,7 @@ const careerData: CareerItem[] = [
   {
     id: "national-team",
     category: "National Team (Italy)",
-    period: "[from 2016 to 2019]",
+    period: "from 2016 to 2019",
     icon: <Medal className="w-8 h-8 text-blue-400" />,
     achievements: ["Proudly representing Italy in the ISA World Adaptive Surfing Championships."],
     sources: [
@@ -59,7 +59,7 @@ const careerData: CareerItem[] = [
   {
     id: "skyrace",
     category: "Skyrace Villacidro",
-    period: "[2018]",
+    period: "2018",
     icon: <Video className="w-8 h-8 text-pink-400" />,
     achievements: ["Conquering the rugged 10km Santu Miali mountain route in the heart of Sardinia."],
     sources: [
@@ -73,7 +73,7 @@ const careerData: CareerItem[] = [
   {
     id: "wakeboarding",
     category: "Wakeboarding",
-    period: "[2017]",
+    period: "2017",
     icon: <Video className="w-8 h-8 text-cyan-400" />,
     achievements: ["Advancing regional wakeboarding through regional initiatives and FISW testimonials."],
     sources: [
@@ -87,7 +87,7 @@ const careerData: CareerItem[] = [
   {
     id: "fyourlimit",
     category: "F.yourlimit",
-    period: "[from 2019 to 2023]",
+    period: "from 2019 to 2023",
     icon: <Medal className="w-8 h-8 text-white" />,
     achievements: [
       "Four years of pure emotion, transforming the water into a sanctuary where every new soul discovers their own limitless horizon."
@@ -98,7 +98,7 @@ const careerData: CareerItem[] = [
   {
     id: "wingfoiling",
     category: "Wingfoiling",
-    period: "[from 2023 to Present]",
+    period: "from 2023 to Present",
     icon: <Video className="w-8 h-8 text-indigo-400" />,
     achievements: ["Stay curious and never stop reaching for the next horizon."],
     sources: [],
@@ -107,7 +107,7 @@ const careerData: CareerItem[] = [
   {
     id: "sponsors",
     category: "Sponsors & Partners",
-    period: "[Partners]",
+    period: "Partners",
     icon: <MapPin className="w-8 h-8 text-green-400" />,
     achievements: ["Empowered by world-class technical partners in prosthetic innovation."],
     sources: [
@@ -120,7 +120,7 @@ const careerData: CareerItem[] = [
   {
     id: "press",
     category: "Press & Media Coverage",
-    period: "[Media]",
+    period: "Media",
     icon: <Newspaper className="w-8 h-8 text-red-400" />,
     achievements: ["Featured globally for a journey that redefines the limits of adaptive sport."],
     sources: [
@@ -134,7 +134,7 @@ const careerData: CareerItem[] = [
   {
     id: "thanks",
     category: "Special Thanks",
-    period: "[Team]",
+    period: "Team",
     icon: <Medal className="w-8 h-8 text-white" />,
     achievements: [
       "A journey built with passion and shared with incredible people."
