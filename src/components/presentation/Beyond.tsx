@@ -252,16 +252,16 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
         {/* Gradient overlay for text contrast */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
       </motion.div>      {/* Content Container */}
-      <div className={cn(
-        "relative z-10 w-full h-full flex flex-col items-center",
-        data.id === 'intro' ? "justify-center" : "lg:flex-row justify-between"
-      )}>
-        
-        {/* Achievements Text Area */}
         <div className={cn(
-          "flex-1 w-full flex flex-col",
-          data.id === 'intro' ? "items-center justify-center px-6" : "px-6 md:px-16 lg:px-32 justify-end lg:justify-center pb-12 lg:pb-0 h-full"
+          "relative z-10 w-full h-full flex flex-col items-center",
+          (data.id === 'intro' || (isMobile && (data.id === 'thanks' || data.achievements.length === 0))) ? "justify-center" : "lg:flex-row justify-between"
         )}>
+          
+          {/* Achievements Text Area */}
+          <div className={cn(
+            "flex-1 w-full flex flex-col",
+            (data.id === 'intro' || (isMobile && (data.id === 'thanks' || data.achievements.length === 0))) ? "h-full items-center justify-center px-6" : "px-6 md:px-16 lg:px-32 justify-end lg:justify-center pb-12 lg:pb-0 h-full"
+          )}>
           <motion.div 
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
