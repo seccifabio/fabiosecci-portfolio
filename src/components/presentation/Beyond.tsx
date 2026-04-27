@@ -223,7 +223,7 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
             ref={videoRef}
             key={data.bgVideoUrl}
             className={cn(
-              "w-full h-full object-cover",
+              "w-full h-full object-cover pointer-events-none select-none",
               data.id === 'wingfoiling' ? "scale-[1.2]" : ""
             )}
             src={getAssetPath(data.bgVideoUrl)}
@@ -231,6 +231,9 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
             muted 
             loop 
             playsInline
+            disablePictureInPicture
+            controlsList="nodownload nofullscreen noremoteplayback"
+            onContextMenu={(e) => e.preventDefault()}
           />
         ) : (
           <div 
@@ -308,6 +311,24 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
                 </div>
               </h2>
             </div>
+
+            {data.id === 'intro' && (
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? {
+                  opacity: [0, 0.4, 0.4, 0],
+                  y: [10, 0, 0, -10]
+                } : { opacity: 0 }}
+                transition={{ 
+                  duration: 2.5, 
+                  times: [0, 0.2, 0.8, 1],
+                  delay: 1.8 
+                }}
+                className="text-xs md:text-sm uppercase tracking-[0.3em] font-sans font-light text-white mt-4"
+              >
+                A journey beyond the professional, shaped by sport and a deep passion for the water.
+              </motion.p>
+            )}
             
             {data.achievements.length > 0 && (
               <ul className="space-y-4">
