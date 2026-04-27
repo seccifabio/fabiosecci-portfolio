@@ -343,7 +343,7 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
             )}
             
             {data.achievements.length > 0 && !(data.id === 'thanks' && isMobile) && (
-              <ul className="space-y-4">
+              <ul className={cn("space-y-4", data.id === 'fyourlimit' && "lg:max-w-[60%]")}>
                 {data.achievements.map((achievement, i) => (
                   <motion.li 
                     key={i}
