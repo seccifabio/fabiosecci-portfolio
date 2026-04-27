@@ -31,7 +31,7 @@ const careerData: CareerItem[] = [
   {
     id: "titles",
     category: "World & European Titles",
-    period: "from 2018 to 2019",
+    period: "2018 - 2019",
     icon: <Trophy className="w-8 h-8 text-yellow-400" />,
     achievements: ["Vice World Champion and European leader in Adaptive Wakesurf."],
     sources: [
@@ -45,7 +45,7 @@ const careerData: CareerItem[] = [
   {
     id: "national-team",
     category: "National Team (Italy)",
-    period: "from 2016 to 2019",
+    period: "2016 - 2019",
     icon: <Medal className="w-8 h-8 text-blue-400" />,
     achievements: ["Proudly representing Italy in the ISA World Adaptive Surfing Championships."],
     sources: [
@@ -87,7 +87,7 @@ const careerData: CareerItem[] = [
   {
     id: "fyourlimit",
     category: "F.yourlimit",
-    period: "from 2019 to 2023",
+    period: "2019 - 2023",
     icon: <Medal className="w-8 h-8 text-white" />,
     achievements: [
       "Four years of pure emotion, transforming the water into a sanctuary where every new soul discovers their own limitless horizon."
@@ -98,7 +98,7 @@ const careerData: CareerItem[] = [
   {
     id: "wingfoiling",
     category: "Wingfoiling",
-    period: "from 2023 to Present",
+    period: "2023 - Present",
     icon: <Video className="w-8 h-8 text-indigo-400" />,
     achievements: ["Stay curious and never stop reaching for the next horizon."],
     sources: [],
@@ -197,7 +197,7 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: 20 },
+    hidden: { opacity: 0, x: 50 },
     visible: {
       opacity: 1,
       x: 0,
@@ -216,23 +216,9 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
       {/* Background Media */}
       <motion.div 
         className={data.bgVideoUrl ? "absolute inset-0 w-full h-full z-0" : "absolute inset-[-15%] w-[130%] h-[130%] z-0"}
-        initial={data.bgVideoUrl ? { opacity: 0 } : { opacity: 0, x: "-4%", y: "-4%" }}
-        animate={data.bgVideoUrl ? {
-          opacity: isInView ? 0.85 : 0
-        } : { 
-          opacity: isInView ? 0.85 : 0,
-          x: isInView ? ["-4%", "4%"] : "-4%",
-          y: isInView ? ["-4%", "2%"] : "-4%",
-          scale: isInView ? [1, 1.1] : 1
-        }}
-        transition={data.bgVideoUrl ? {
-          opacity: { duration: 1.5, ease: "easeOut" }
-        } : { 
-          opacity: { duration: 1.5, ease: "easeOut" },
-          x: { duration: 22, ease: "linear", repeat: Infinity, repeatType: "reverse" },
-          y: { duration: 28, ease: "linear", repeat: Infinity, repeatType: "reverse" },
-          scale: { duration: 35, ease: "linear", repeat: Infinity, repeatType: "reverse" }
-        }}
+        initial={{ y: "10%", opacity: 0 }}
+        animate={isInView ? { y: 0, opacity: 1 } : { y: "10%", opacity: 0 }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       >
         {data.bgVideoUrl ? (
           <video 
@@ -277,8 +263,8 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
                 : "px-6 md:px-16 lg:px-32 justify-end lg:justify-center pb-12 lg:pb-0 h-full"
           )}>
           <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            initial={{ x: isMobile ? 0 : 100, y: isMobile ? 50 : 0, opacity: 0 }}
+            animate={isInView ? { x: 0, y: 0, opacity: 1 } : { x: isMobile ? 0 : 100, y: isMobile ? 50 : 0, opacity: 0 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className={cn("w-full", data.id === 'intro' ? "text-center" : "text-left")}
           >
@@ -421,7 +407,7 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
             animate={isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: isMobile ? 0 : 100, y: isMobile ? 100 : 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
           >
-            <h3 className="text-[10px] font-black tracking-[0.4em] text-zinc-400 uppercase mb-8">
+            <h3 className="text-[10px] lg:text-[13px] font-black tracking-[0.4em] text-zinc-400 uppercase mb-4">
               {data.period || "Sources"}
             </h3>
             
