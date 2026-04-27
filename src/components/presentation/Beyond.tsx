@@ -320,8 +320,8 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
                   y: [10, 0, 0, -10]
                 } : { opacity: 0 }}
                 transition={{ 
-                  duration: 2.5, 
-                  times: [0, 0.2, 0.8, 1],
+                  duration: 4, 
+                  times: [0, 0.1, 0.9, 1],
                   delay: 1.8 
                 }}
                 className="text-xs md:text-sm uppercase tracking-[0.3em] font-sans font-light text-white mt-4"
