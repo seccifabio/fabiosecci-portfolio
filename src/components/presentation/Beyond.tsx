@@ -254,13 +254,17 @@ const CarouselSection: React.FC<{ data: CareerItem; index: number }> = ({ data, 
       </motion.div>      {/* Content Container */}
         <div className={cn(
           "relative z-10 w-full h-full flex flex-col items-center",
-          (isMobile || data.id === 'intro') ? "justify-center" : "lg:flex-row justify-between"
+          (isMobile && data.sources.length > 0) ? "justify-start" : "justify-center lg:flex-row lg:justify-between"
         )}>
           
           {/* Achievements Text Area */}
           <div className={cn(
             "flex-1 w-full flex flex-col",
-            (isMobile || data.id === 'intro') ? "h-full items-center justify-center px-6" : "px-6 md:px-16 lg:px-32 justify-end lg:justify-center pb-12 lg:pb-0 h-full"
+            (isMobile && data.sources.length > 0) 
+              ? "justify-end pb-12 px-6" 
+              : (isMobile || data.id === 'intro') 
+                ? "h-full items-center justify-center px-6" 
+                : "px-6 md:px-16 lg:px-32 justify-end lg:justify-center pb-12 lg:pb-0 h-full"
           )}>
           <motion.div 
             initial={{ opacity: 0, y: 50 }}
