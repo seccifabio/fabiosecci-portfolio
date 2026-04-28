@@ -148,7 +148,7 @@ const careerData: CareerItem[] = [
       { text: "Porzio Group & Marco — Support", url: "" },
       { text: "CIP — Regional Support", url: "" }
     ],
-    bgVideoUrl: "/Career/career/Intro.mp4"
+    bgVideoUrl: "/Career/career/Thanks.mp4"
   }
 ];
 

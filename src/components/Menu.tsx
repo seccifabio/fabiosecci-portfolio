@@ -224,6 +224,23 @@ export const Menu = ({ isOpen, onClose }: MenuProps) => {
             >
               A journey beyond the professional, shaped by sport and a deep passion for the water.
             </motion.p>
+
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={isBeyondInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 1, delay: 1.8 }}
+              onClick={() => {
+                onClose();
+                navigate('/beyond');
+              }}
+              className="flex items-center justify-center gap-4 text-[11px] uppercase tracking-[0.4em] font-sans font-medium text-white/50 hover:text-white transition-all group pointer-events-auto"
+            >
+              <span className="relative">
+                Discover the journey
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-white transition-all duration-500 group-hover:w-full" />
+              </span>
+              <div className="w-12 h-[1px] bg-white/20 group-hover:bg-white/80 group-hover:w-16 transition-all duration-500" />
+            </motion.button>
           </motion.div>
         </div>
       </div>
