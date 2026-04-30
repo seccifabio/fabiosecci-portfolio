@@ -205,11 +205,11 @@ export const AIExperimentsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12 md:gap-16 items-center">
-          <div className="flex flex-col border-t border-muted">
+          <div className="flex flex-col border-t border-zinc-200">
             {experiments.map((exp, i) => {
               if (!exp) return null;
               return (
-                <motion.div key={exp.id || i} ref={el => itemRefs.current[i] = el} onMouseEnter={() => setHoveredIndex(i)} className={`group border-b border-muted ${expandedIndex === i ? 'border-b-transparent' : ''}`}>
+                <motion.div key={exp.id || i} ref={el => itemRefs.current[i] = el} onMouseEnter={() => setHoveredIndex(i)} className={`group border-b border-zinc-200 hover:border-zinc-500 transition-colors duration-500 ${expandedIndex === i ? 'border-b-transparent' : ''}`}>
                   <div onClick={() => setExpandedIndex(i)} className="py-xl flex flex-col md:flex-row md:items-center gap-12 md:gap-16 use-std-cursor relative">
                     <div className="flex-1 flex items-start md:items-center gap-6 md:gap-10">
                       <span className="text-xs font-mono opacity-30">0{i + 1}</span>
@@ -234,7 +234,7 @@ export const AIExperimentsSection = () => {
                         </motion.div>
                       </div>
                     </div>
-                  <motion.div className="absolute left-0 bottom-0 h-[2px] bg-background" initial={{ width: 0 }} animate={{ width: hoveredIndex === i ? '100%' : 0 }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }} />
+                  <motion.div className="absolute left-0 bottom-[-1px] h-[1px] bg-zinc-800" initial={{ width: 0 }} animate={{ width: hoveredIndex === i ? '100%' : 0 }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }} />
                 </div>
               </motion.div>
             )})}
