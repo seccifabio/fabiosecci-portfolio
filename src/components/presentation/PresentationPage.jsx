@@ -707,12 +707,15 @@ const PresentationPage = () => {
     }
     
     // Auto-advance introStage for Intro Split slide (Slide 0)
+    // Removed to require manual click
+    /*
     if (currentSlide === 0 && introStage === 0) {
       const timer = setTimeout(() => {
         setIntroStage(1);
       }, 3500);
       return () => clearTimeout(timer);
     }
+    */
   }, [currentSlide, introStage]);
 
   useEffect(() => {
