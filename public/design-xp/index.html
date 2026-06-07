@@ -820,6 +820,9 @@
         }
 
         @media (max-width: 768px) {
+            .hero-tagline-container {
+                align-self: center !important;
+            }
             .services-scroll-stage {
                 height: auto;
             }
@@ -2256,7 +2259,7 @@
             .desk-scroll-icon { display: none !important; }
             .mweb-scroll-icon { display: block !important; }
             .scroll-indicator-container {
-                top: calc(100vh - 180px) !important; /* Anchors to initial viewport height, not the bottom of the massive container */
+                top: calc(100vh - 250px) !important; /* Moved higher up for mobile */
                 bottom: auto !important;
                 width: 100%;
                 text-align: center;
