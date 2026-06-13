@@ -1002,7 +1002,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 1rem 10% 4rem 10%;
+            padding: 1rem 5% 4rem 5%;
             pointer-events: none;
             opacity: 0;
         }
@@ -1019,7 +1019,7 @@
         .approach-content-wrapper {
             position: relative;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1300px;
         }
 
         .approach-wave-container {
@@ -1082,34 +1082,35 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 28px;
-            height: 28px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            border: 1px solid #ffffff;
-            background: #ffffff;
-            color: var(--novartis-primary);
+            border: 2px solid #ffffff;
+            background-color: #ffffff !important;
+            opacity: 1 !important;
+            color: transparent;
             font-size: 1.2rem;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            transition: background 0.3s, color 0.3s, border-color 0.3s;
-            z-index: 5;
+            transition: transform 0.3s, box-shadow 0.3s;
+            z-index: 10;
         }
 
         .approach-step:nth-child(odd) .step-icon {
-            top: 6px;
+            top: 30px;
         }
 
         .approach-step:nth-child(even) .step-icon {
-            bottom: 6px;
+            bottom: 30px;
         }
 
         .approach-step:nth-child(odd) .step-name {
-            top: -40px;
+            top: -10px;
         }
 
         .approach-step:nth-child(even) .step-name {
-            bottom: -40px;
+            bottom: -10px;
         }
 
         @keyframes pulse {
@@ -2378,11 +2379,8 @@
                     <span class="claim-word" style="display:inline-block; color: var(--novartis-primary);">force</span> <span class="claim-word" style="display:inline-block; color: var(--novartis-primary);">multiplier</span> 
                     <span class="claim-word" style="display:inline-block;">for</span> <span class="claim-word" style="display:inline-block;">Novartis.</span>
                 </h3>
-                <p style="font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 300; color: #666; max-width: 1000px; margin-bottom: 1rem; line-height: 1.5; text-wrap: balance;">
-                    <span class="claim-word" style="display:inline-block;">Designing</span> <span class="claim-word" style="display:inline-block;">experiences</span> <span class="claim-word" style="display:inline-block;">that</span> <span class="claim-word" style="display:inline-block;">empower</span> <span class="claim-word" style="display:inline-block;">faster,</span> <span class="claim-word" style="display:inline-block;">smarter,</span> <span class="claim-word" style="display:inline-block;">and</span> <span class="claim-word" style="display:inline-block;">more</span> <span class="claim-word" style="display:inline-block;">confident</span> <span class="claim-word" style="display:inline-block;">work.</span>
-                </p>
-                <p style="font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 300; color: #666; max-width: 900px; line-height: 1.5; text-wrap: balance;">
-                    <span class="claim-word" style="display:inline-block;">By</span> <span class="claim-word" style="display:inline-block;">removing</span> <span class="claim-word" style="display:inline-block;">friction,</span> <span class="claim-word" style="display:inline-block;">we</span> <span class="claim-word" style="display:inline-block;">unlock</span> <span class="claim-word" style="display:inline-block;">the</span> <span class="claim-word" style="display:inline-block;">organization's</span> <span class="claim-word" style="display:inline-block;">full</span> <span class="claim-word" style="display:inline-block;">potential.</span>
+                <p style="font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 300; color: #666; max-width: 1000px; line-height: 1.5; text-wrap: balance;">
+                    <span class="claim-word" style="display:inline-block;">We</span> <span class="claim-word" style="display:inline-block;">design</span> <span class="claim-word" style="display:inline-block;">around</span> <span class="claim-word" style="display:inline-block;">real</span> <span class="claim-word" style="display:inline-block;">user</span> <span class="claim-word" style="display:inline-block;">behaviours,</span> <span class="claim-word" style="display:inline-block;">orchestrating</span> <span class="claim-word" style="display:inline-block;">scalable</span> <span class="claim-word" style="display:inline-block;">experiences</span> <span class="claim-word" style="display:inline-block;">that</span> <span class="claim-word" style="display:inline-block;">turn</span> <span class="claim-word" style="display:inline-block;">strategic</span> <span class="claim-word" style="display:inline-block;">vision</span> <span class="claim-word" style="display:inline-block;">into</span> <span class="claim-word" style="display:inline-block;">execution</span> <span class="claim-word" style="display:inline-block;">—</span> <span class="claim-word" style="display:inline-block;">driving</span> <span class="claim-word" style="display:inline-block;">adoption</span> <span class="claim-word" style="display:inline-block;">across</span> <span class="claim-word" style="display:inline-block;">your</span> <span class="claim-word" style="display:inline-block;">entire</span> <span class="claim-word" style="display:inline-block;">product</span> <span class="claim-word" style="display:inline-block;">ecosystem.</span>
                 </p>
             </div>
 
@@ -2422,8 +2420,8 @@
                 <!-- Q3: Brand & Marketing -->
                 <div class="svc-quad" id="quad3">
                     <div>
-                        <div class="svc-quad-index">03 / Brand and communication</div>
-                        <div class="svc-quad-body">We design stunning visual identities and compelling internal campaigns that deeply resonate with your teams and rapidly accelerate product adoption.</div>
+                        <div class="svc-quad-index">03 / Experiences that scale</div>
+                        <div class="svc-quad-body">We think, build, and orchestrate scalable digital experiences that evolve with your product — enabling human teams and AI agents to collaborate seamlessly, ship faster, and deliver consistent quality at every touchpoint.</div>
                         <a href="#our-approach" class="svc-discover-btn hover-target">Discover</a>
                     </div>
                 </div>
@@ -2444,42 +2442,94 @@
             <!-- Layer D1: Our Approach Overlay -->
             <section class="approach" id="our-approach">
                 <div class="approach-header">
-                    <h2 class="section-masked-title" style="margin-bottom: 6rem; font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;">
+                    <h2 class="section-masked-title" style="margin-bottom: 1rem; font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;">
                         <span class="title-line-container" style="overflow: visible; display: inline-block;"><span class="title-line approach-title-line">Our approach<span style="display: inline-block; width: 0.18em; height: 0.18em; background-color: #ffffff; margin-left: 0.05em;"></span></span></span>
                     </h2>
+                    <p class="approach-title-line" style="font-family: var(--font-main); font-size: clamp(0.9rem, 1.2vw, 1.1rem); color: rgba(255,255,255,0.7); margin-bottom: 6rem; font-weight: 400;">ICE framework based</p>
                 </div>
                 <div class="approach-content-wrapper">
                     <div class="approach-wave-container">
                         <svg viewBox="0 0 1000 200" preserveAspectRatio="none" class="approach-wave-svg">
-                            <!-- Double Diamond Smooth Shape (Dotted Border) -->
-                            <path class="animated-dotted-path" d="M 0,100 Q 62.5,50 125,20 Q 187.5,50 250,100 Q 312.5,150 375,180 Q 437.5,150 500,100 Q 562.5,50 625,20 Q 687.5,50 750,100 Q 812.5,150 875,180 Q 937.5,150 1000,100" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-dasharray="6,6"/>
                             <!-- Center Line -->
                             <path d="M 0,100 L 1000,100" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none" />
-                            <!-- Start and End Dots -->
-                            <circle cx="0" cy="100" r="6" fill="#ffffff" />
-                            <circle cx="1000" cy="100" r="6" fill="#ffffff" />
+                            
+                            <!-- Vertical Separators -->
+                            <path d="M 250,100 L 250,310" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none" stroke-dasharray="4,4" />
+                            <path d="M 500,100 L 500,310" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none" stroke-dasharray="4,4" />
+                            <path d="M 750,100 L 750,310" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none" stroke-dasharray="4,4" />
+                            
+                            <!-- E&A Form Start -->
+                            <path d="M 5,100 L 5,140" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none" />
 
+                            <!-- Zigzag Dotted Path -->
+                            <path class="animated-dotted-path" d="M 5,100 L 125,50 L 375,150 L 625,50 L 875,150 L 1000,100" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-dasharray="6,6"/>
                         </svg>
+
+                        <!-- HTML Overlays to prevent stretching -->
+                        <!-- Vertical Separators Dots & Text -->
+                        <style>
+                            .milestone-trigger {
+                                cursor: pointer;
+                                z-index: 10;
+                                pointer-events: auto;
+                            }
+                            .milestone-trigger:hover .milestone-dot {
+                                background: rgba(255,255,255,1) !important;
+                                transform: translate(-50%, -50%) scale(1.5) !important;
+                                box-shadow: 0 0 10px rgba(255,255,255,0.5);
+                            }
+                            .milestone-trigger:hover .milestone-text {
+                                color: rgba(255,255,255,1) !important;
+                            }
+                        </style>
+                        
+                        <!-- Vertical Separators Start Dots -->
+                        <div style="position: absolute; left: 25%; top: 100px; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.6); transform: translate(-50%, -50%); z-index: 5;"></div>
+                        <div style="position: absolute; left: 50%; top: 100px; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.6); transform: translate(-50%, -50%); z-index: 5;"></div>
+                        <div style="position: absolute; left: 75%; top: 100px; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.6); transform: translate(-50%, -50%); z-index: 5;"></div>
+
+                        <div class="milestone-trigger hover-target" data-step="1" style="position: absolute; left: 25%; top: 310px; width: 80px; height: 60px; transform: translateX(-50%);">
+                            <div class="milestone-dot" style="position: absolute; left: 50%; top: 0; width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transform: translate(-50%, -50%); transition: all 0.3s ease;"></div>
+                            <div class="milestone-text" style="position: absolute; left: 50%; top: 25px; color: rgba(255,255,255,0.6); font-size: 0.875rem; font-weight: 500; font-family: var(--font-main); transform: translate(-50%, -50%); transition: all 0.3s ease;">Milestone</div>
+                        </div>
+                        
+                        <div class="milestone-trigger hover-target" data-step="2" style="position: absolute; left: 50%; top: 310px; width: 80px; height: 60px; transform: translateX(-50%);">
+                            <div class="milestone-dot" style="position: absolute; left: 50%; top: 0; width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transform: translate(-50%, -50%); transition: all 0.3s ease;"></div>
+                            <div class="milestone-text" style="position: absolute; left: 50%; top: 25px; color: rgba(255,255,255,0.6); font-size: 0.875rem; font-weight: 500; font-family: var(--font-main); transform: translate(-50%, -50%); transition: all 0.3s ease;">Milestone</div>
+                        </div>
+                        
+                        <div class="milestone-trigger hover-target" data-step="3" style="position: absolute; left: 75%; top: 310px; width: 80px; height: 60px; transform: translateX(-50%);">
+                            <div class="milestone-dot" style="position: absolute; left: 50%; top: 0; width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transform: translate(-50%, -50%); transition: all 0.3s ease;"></div>
+                            <div class="milestone-text" style="position: absolute; left: 50%; top: 25px; color: rgba(255,255,255,0.6); font-size: 0.875rem; font-weight: 500; font-family: var(--font-main); transform: translate(-50%, -50%); transition: all 0.3s ease;">Milestone</div>
+                        </div>
+
+                        <!-- E&A Form Elements -->
+                        <div style="position: absolute; left: 0.5%; top: 100px; width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.6); transform: translate(-50%, -50%);"></div>
+                        <div style="position: absolute; left: 0.5%; top: 150px; width: 20px; height: 20px; border-radius: 50%; background: rgba(255,255,255,0.6); transform: translate(-50%, -50%);"></div>
+                        <div style="position: absolute; left: 2.5%; top: 155px; color: rgba(255,255,255,0.6); font-size: 1rem; font-family: var(--font-main); transform: translateY(-50%);">E&amp;A Form</div>
+
+                        <!-- End Dot -->
+                        <div style="position: absolute; left: 99.5%; top: 100px; width: 8px; height: 8px; border-radius: 50%; background: #ffffff; transform: translate(-50%, -50%);"></div>
                     </div>
                     <div class="approach-steps">
                         <div class="approach-step hover-target" data-step="1">
                             <div class="approach-step-content">
-                                <h3 class="step-name">Planning</h3><span class="step-icon">+</span>
+                                <h3 class="step-name">Planning</h3><span class="step-icon"></span>
                             </div>
                         </div>
                         <div class="approach-step hover-target" data-step="2">
                             <div class="approach-step-content">
-                                <h3 class="step-name">Seek and scope</h3><span class="step-icon">+</span>
+                                <h3 class="step-name">Seek and scope</h3><span class="step-icon"></span>
                             </div>
                         </div>
                         <div class="approach-step hover-target" data-step="3">
                             <div class="approach-step-content">
-                                <h3 class="step-name">Solution</h3><span class="step-icon">+</span>
+                                <h3 class="step-name">Solution</h3><span class="step-icon"></span>
                             </div>
                         </div>
                         <div class="approach-step hover-target" data-step="4">
                             <div class="approach-step-content">
-                                <h3 class="step-name">Sustain</h3><span class="step-icon">+</span>
+                                <h3 class="step-name">Sustain</h3><span class="step-icon"></span>
                             </div>
                         </div>
                     
@@ -2512,75 +2562,66 @@
 
         <div class="team-grid">
 
-            <!-- 2: Kishore -->
-            <div class="team-card hover-target">
-                <div class="team-avatar">K</div>
-                <h3 class="team-name">Kishore Srinivas</h3>
-                <p class="team-role">Product Design</p>
-            </div>
-
-            <!-- 3: Vaishnavi -->
-            <div class="team-card hover-target">
-                <div class="team-avatar">V</div>
-                <h3 class="team-name">Vaishnavi Kasturi</h3>
-                <p class="team-role">User Journey</p>
-            </div>
-
-            <!-- 4: Adeyinka -->
-            <div class="team-card hover-target">
-                <div class="team-avatar">A</div>
-                <h3 class="team-name">Adeyinka Jokanola</h3>
-                <p class="team-role">Product Design</p>
-            </div>
-
-            <!-- 5: Sujith -->
-            <div class="team-card hover-target">
-                <div class="team-avatar">S</div>
-                <h3 class="team-name">Sujith Devanagari</h3>
-                <p class="team-role">Product Design</p>
-            </div>
-
-            <!-- 6: Sudharani -->
-            <div class="team-card hover-target">
-                <div class="team-avatar">S</div>
-                <h3 class="team-name">Sudharani Challa</h3>
-                <p class="team-role">Product Design Lead</p>
-            </div>
-
-            <!-- 7: Güray -->
-            <div class="team-card hover-target">
-                <div class="team-avatar">G</div>
-                <h3 class="team-name">Güray Gürsoy</h3>
-                <p class="team-role">Product Design</p>
-            </div>
-
-            <!-- 8: Fernando -->
             <div class="team-card hover-target">
                 <div class="team-avatar">F</div>
-                <h3 class="team-name">Fernando Barneze</h3>
-                <p class="team-role">Product Design Lead</p>
+                <h3 class="team-name">Fernando Barneze Gonzalez</h3>
+                <p class="team-role">Product Designer | Experience &amp; Strategy</p>
             </div>
 
-            <!-- 9: Abhijeet -->
             <div class="team-card hover-target">
                 <div class="team-avatar">A</div>
                 <h3 class="team-name">Abhijeet Singh</h3>
-                <p class="team-role">Product Design Lead</p>
+                <p class="team-role">Product Designer | Experience &amp; Strategy</p>
             </div>
 
-            <!-- 10: Amal -->
             <div class="team-card hover-target">
                 <div class="team-avatar">A</div>
                 <h3 class="team-name">Amal Tapalov</h3>
-                <p class="team-role">Product Design Lead</p>
+                <p class="team-role">Product Designer | Experience &amp; Strategy</p>
             </div>
 
-            <!-- 11: Parijat -->
+            <div class="team-card hover-target">
+                <div class="team-avatar">S</div>
+                <h3 class="team-name">Sudharani Challa</h3>
+                <p class="team-role">Product Designer | Experience &amp; Strategy</p>
+            </div>
+
             <div class="team-card hover-target">
                 <div class="team-avatar">P</div>
                 <h3 class="team-name">Parijat Guha</h3>
-                <p class="team-role">Service Design</p>
+                <p class="team-role">Product Designer | Experience &amp; Strategy</p>
             </div>
+
+            <div class="team-card hover-target">
+                <div class="team-avatar">K</div>
+                <h3 class="team-name">Kasturi Vaishnavi</h3>
+                <p class="team-role">Product Designer | Experience &amp; Design</p>
+            </div>
+
+            <div class="team-card hover-target">
+                <div class="team-avatar">S</div>
+                <h3 class="team-name">Sujith Devanagari</h3>
+                <p class="team-role">Product Designer | Experience &amp; Design</p>
+            </div>
+
+            <div class="team-card hover-target">
+                <div class="team-avatar">A</div>
+                <h3 class="team-name">Adeyinka Jokanola</h3>
+                <p class="team-role">Product Designer | Experience &amp; Design</p>
+            </div>
+
+            <div class="team-card hover-target">
+                <div class="team-avatar">G</div>
+                <h3 class="team-name">Guray Gursoy</h3>
+                <p class="team-role">Product Designer | Experience &amp; Design</p>
+            </div>
+
+            <div class="team-card hover-target">
+                <div class="team-avatar">P</div>
+                <h3 class="team-name">P Kishore Srinivas</h3>
+                <p class="team-role">Product Designer | Experience &amp; Design</p>
+            </div>
+
         </div>
     </section>
 
@@ -3021,7 +3062,7 @@
         entranceTl
             .to('.nav-logo, #scrollIndicator', { opacity: 0, duration: 0.3 }, 0)
             .to('.claim-word', { opacity: 1, y: 0, duration: 0.8, stagger: 0.05, ease: 'power3.out' }, 0.2)
-            .to('.claim-word', { opacity: 1, duration: 1.5 })
+            .to('.claim-word', { opacity: 1, duration: 3.5 })
             .to('#introClaim', { opacity: 0, filter: 'blur(10px)', y: -20, duration: 1.0, ease: 'power2.inOut' })
             .fromTo(svcWord1, { y: '110%', opacity: 0, visibility: 'hidden' }, { y: '0%', opacity: 1, visibility: 'visible', duration: 1.2, ease: 'power4.out' }, '-=0.3')
             .fromTo(svcWord2, { y: '110%', opacity: 0, visibility: 'hidden' }, { y: '0%', opacity: 1, visibility: 'visible', duration: 1.2, ease: 'power4.out' }, '-=0.8')
@@ -3488,20 +3529,21 @@
                 bullets: [
                     "Understanding Objectives: Defining and aligning on your core business goals.",
                     "Evaluating Business Needs: Assessing requirements and identifying key challenges.",
-                    "Collaborative Planning: Working together to map out the best approach for your initiative.",
+                    "Collaborating Planning: Working together to map out the best approach for your initiative.",
                     "Strategic Alignment: Ensuring all stakeholders understand the path forward."
-                ]
+                ],
+                milestone: "Problem defined, business value clear, user identified, evidence available, success measured, constraints & delivery aligned"
             },
             2: { 
                 title: "Seek and scope", 
                 text: "Through usability audits and data gathering, we uncover hidden pain points to define the exact scope of the solution, establishing clear KPIs and metrics across the entire user journey.",
                 team: "User research & Insight",
                 bullets: [
-                    "Usability Audits: Conducting deep research to validate assumptions and evaluate existing systems.",
                     "Identifying Pain Points: Uncovering hidden friction areas that disrupt the user experience.",
                     "Journey Scoping: Defining the precise scope of the solution across the entire user journey.",
                     "Metrics & KPIs: Establishing clear performance indicators to measure future success."
-                ]
+                ],
+                milestone: "Problem & flow defined, success metrics set, validation approach clear, and execution ready with system, tech, and accessibility checks confirmed"
             },
             3: { 
                 title: "Solution", 
@@ -3512,7 +3554,8 @@
                     "Architecture & Design: Building pixel-perfect interfaces and robust design systems.",
                     "Brand and communication: Crafting compelling visual assets and intuitive interactions.",
                     "System Thinking & Collaboration: Working hand-in-hand with development for seamless handoff."
-                ]
+                ],
+                milestone: "Designs ready, specs clear, reviewed during build, QA validated, and approved for go-live."
             },
             4: { 
                 title: "Sustain", 
@@ -3552,14 +3595,12 @@
                 ]
             },
             3: {
-                title: "Brand and communication",
-                text: "We design visual identities and campaigns to accelerate product adoption.",
+                title: "Experiences that scale",
+                text: "We think, build, and orchestrate scalable digital experiences that evolve with your product — enabling human teams and AI agents to collaborate seamlessly, ship faster, and deliver consistent quality at every touchpoint.",
                 bullets: [
-                    "Visual Identity: Crafting modern brand design languages.",
-                    "Internal Campaigns: Driving engagement and adoption.",
-                    "Product Assets: Building materials for fast onboarding.",
-                    "Asset Production: Delivering digital media and emails.",
-                    "Templates: Building reusable templates for autonomy."
+                    "Scalable Architecture & Delivery: Building flexible digital foundations and streamlining workflows to help your teams adapt, evolve, and ship faster.",
+                    "Human-AI Collaboration: Designing intuitive interfaces that empower human teams to work seamlessly with AI agents.",
+                    "Orchestrated & Consistent Quality: Harmonizing complex systems to ensure high standards and reliable experiences at every touchpoint."
                 ]
             },
             4: {
@@ -3597,9 +3638,17 @@
             }
             let teamHtml = '';
             if (data.team) {
-                teamHtml = `<div style="margin-top: 1.5rem; margin-bottom: 2rem; padding: 1rem 1.5rem; background: rgba(236, 74, 8, 0.05); border-left: 3px solid var(--novartis-primary); border-radius: 0 8px 8px 0;">
-                    <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--novartis-primary); display: block; margin-bottom: 0.4rem; font-weight: 800;">Collaborating Teams</span>
-                    <span style="color: var(--text-primary); font-size: 0.95rem; font-weight: 400;">${data.team}</span>
+                teamHtml = `<div style="margin-top: 1.5rem; margin-bottom: 0.5rem; padding: 1rem 1.5rem; background: rgba(236, 74, 8, 0.05); border-left: 3px solid var(--novartis-primary); border-radius: 0 8px 8px 0;">
+                    <span style="font-family: var(--font-main); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--novartis-primary); display: block; margin-bottom: 0.4rem; font-weight: 800;">Collaborating Teams</span>
+                    <span style="font-family: var(--font-body); color: var(--text-primary); font-size: 0.95rem; font-weight: 400;">${data.team}</span>
+                </div>`;
+            }
+
+            let milestoneHtml = '';
+            if (data.milestone) {
+                milestoneHtml = `<div style="margin-top: 0.5rem; margin-bottom: 2rem; padding: 1rem 1.5rem; background: rgba(236, 74, 8, 0.05); border-left: 3px solid var(--novartis-primary); border-radius: 0 8px 8px 0;">
+                    <span style="font-family: var(--font-main); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--novartis-primary); display: block; margin-bottom: 0.4rem; font-weight: 800;">Milestones</span>
+                    <span style="font-family: var(--font-body); color: var(--text-primary); font-size: 0.95rem; font-weight: 400;">${data.milestone}</span>
                 </div>`;
             }
             
@@ -3639,11 +3688,11 @@
                             ${bulletsHtml}
                         </ul>
                         ${teamHtml}
+                        ${milestoneHtml}
                         ${ctaHtml}
                     </div>
                 `;
                 
-                // Add the nav outside of the scrollable area if possible, or just keep it at the bottom of the DOM but we restructured CSS
                 // Wait, if it's inside sidebarContent, then sidebarContent is the scrolling area.
                 // We should append navHtml as a sibling to sidebarContent!
                 
@@ -3671,7 +3720,7 @@
             document.getElementById('sidebarOverlay').classList.remove('open');
         }
 
-        document.querySelectorAll('.approach-step').forEach(step => {
+        document.querySelectorAll('.approach-step, .milestone-trigger').forEach(step => {
             step.addEventListener('click', () => {
                 openSidebar(step.getAttribute('data-step'), 'approach');
             });
